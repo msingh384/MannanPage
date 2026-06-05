@@ -1,36 +1,95 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# personal-website
 
-## Getting Started
+My personal site — Next.js + TypeScript + Tailwind v4 + Framer Motion.
+Dark, modern, and built to be edited from a single data file.
 
-First, run the development server:
+## Stack
+
+- **Framework:** Next.js 16 (App Router) + React 19
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS v4
+- **Animation:** Framer Motion
+- **Icons:** lucide-react
+- **Deploy:** Vercel
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Where to edit content
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Almost all copy lives in **`data/site.ts`**. Open it and swap placeholders for
+the real stuff:
 
-## Learn More
+| What                                          | Where                              |
+| --------------------------------------------- | ---------------------------------- |
+| Name, tagline, status, email, social URLs     | `site` object                      |
+| Navigation links                              | `navLinks` array                   |
+| Work experience (Amazon, etc.)                | `experiences` array                |
+| Projects (cards on the homepage)              | `projects` array                   |
+| Education (Georgia Tech, etc.)                | `education` array                  |
+| Skills shown in the About section             | `skills` array                     |
 
-To learn more about Next.js, take a look at the following resources:
+Drop a `resume.pdf` into `public/` and the Resume button will Just Work
+(`site.resumeUrl` defaults to `/resume.pdf`).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+app/
+  layout.tsx          # root layout, fonts, metadata
+  page.tsx            # composes the homepage sections
+  globals.css         # design tokens, custom utilities
+components/
+  Navbar.tsx          # sticky nav with active-section highlighting
+  Hero.tsx            # landing hero with conic glow + gradient text
+  About.tsx           # intro + skills grid
+  Experience.tsx      # vertical timeline of roles
+  Projects.tsx        # project cards with hover glow
+  Education.tsx       # education cards
+  Contact.tsx         # email CTA
+  Footer.tsx
+  ui/                 # shared primitives (Container, Reveal, SectionHeading)
+data/
+  site.ts             # SINGLE SOURCE OF TRUTH for content
+lib/
+  utils.ts            # cn() helper for class merging
+```
 
-## Deploy on Vercel
+## Design system
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Defined in `app/globals.css` via Tailwind v4's `@theme` directive:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Background:** `#08080b` (near-black)
+- **Surfaces:** `white/[0.02]` with `white/[0.08]` borders
+- **Accents:** violet → indigo → cyan gradient
+- **Custom utilities:** `.bg-grid`, `.glow-conic`, `.gradient-text`, `.card-glow`, `.pulse-dot`, `.link-underline`
+
+## Deploy
+
+### Vercel (recommended)
+
+1. Push this repo to GitHub.
+2. Go to [vercel.com/new](https://vercel.com/new), import the repo, and click Deploy.
+3. (Optional) Add a custom domain in Project → Settings → Domains.
+
+### Local production build
+
+```bash
+npm run build
+npm run start
+```
+
+## Scripts
+
+| Command         | Does                            |
+| --------------- | ------------------------------- |
+| `npm run dev`   | start dev server (with Turbopack) |
+| `npm run build` | production build                |
+| `npm run start` | run the production build        |
+| `npm run lint`  | run ESLint                      |
