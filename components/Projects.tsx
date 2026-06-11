@@ -22,7 +22,12 @@ export default function Projects() {
         />
 
         {featured.length > 0 && (
-          <div className="mt-14 grid gap-5 lg:grid-cols-2 lg:gap-6">
+          <div
+            className={cn(
+              "mt-14 grid gap-5 lg:gap-6",
+              featured.length === 1 ? "grid-cols-1" : "lg:grid-cols-2",
+            )}
+          >
             {featured.map((p, i) => (
               <Reveal key={p.title} delay={i * 0.06}>
                 <FeaturedCard project={p} />

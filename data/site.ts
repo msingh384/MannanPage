@@ -1,9 +1,6 @@
 /**
  * Site-wide data. Edit this file to update copy, links, experiences,
  * projects, and education across the whole site.
- *
- * Most strings here are intentionally placeholder so you can swap in
- * specifics from your resume later without hunting through components.
  */
 
 export const site = {
@@ -11,18 +8,17 @@ export const site = {
   shortName: "Mannan",
   role: "Software Engineer",
   tagline:
-    "Computer Science student at Georgia Tech building software that's fast, thoughtful, and robust.",
-  location: "Atlanta, GA · Seattle, WA",
+    "CS student at Georgia Tech building software that's fast, thoughtful, and robust.",
+  location: "Atlanta, GA · Austin, TX",
   status: {
-    label: "Interning at Amazon — Summer 2026",
+    label: "Interning at Amazon · Summer 2026",
     available: true,
   },
-  email: "your.email@gatech.edu",
+  email: "mannanraj13@gmail.com",
   resumeUrl: "/resume.pdf",
   socials: {
-    github: "https://github.com/mannanrajsingh",
+    github: "https://github.com/msingh384",
     linkedin: "https://linkedin.com/in/mannanrajsingh",
-    x: "https://x.com/",
   },
 } as const;
 
@@ -48,46 +44,48 @@ export type Experience = {
 export const experiences: Experience[] = [
   {
     company: "Amazon",
-    role: "Software Development Engineer Intern",
-    period: "Summer 2026",
-    location: "Seattle, WA",
+    role: "Software Development Engineer Intern · B2B Payments",
+    period: "Jun 2026 — Aug 2026",
+    location: "Austin, TX",
     description:
-      "Working on [team / org placeholder] — building scalable services that power [domain placeholder] for millions of customers.",
+      "Re-platforming the Save-and-Retrieve API behind Small Business Credit Card (SBCC) onboarding — migrating an encrypted data pipeline from the legacy Zima service to the Data Incubator Service (DIS).",
     highlights: [
-      "Add a measurable highlight here (e.g. shipped X service that improved Y by Z%).",
-      "Add a second highlight describing scope, scale, or technical decisions.",
-      "Add a third highlight covering collaboration, ownership, or impact.",
+      "Leading end-to-end re-platforming of the Save-and-Retrieve API powering SBCC application onboarding, migrating the encrypted data pipeline from Zima to DIS.",
+      "Re-architected secure storage and retrieval of customer PII used to pre-fill in-progress credit card applications, preserving end-to-end encryption across ingestion, persistence, and retrieval.",
+      "Designed and built an event-driven email notification microservice that alerts customers within 5 days of saved-data expiration, reducing abandoned applications.",
+      "Drove system design reviews, API contracts, and rollout strategy with senior engineers for a customer-facing service handling sensitive financial data at scale.",
     ],
-    stack: ["Java", "AWS", "DynamoDB", "Lambda", "TypeScript"],
+    stack: ["Java", "AWS", "DynamoDB", "Lambda", "Microservices", "Encryption"],
     link: "https://www.amazon.jobs",
   },
   {
-    company: "Previous Company",
-    role: "Software Engineering Intern",
-    period: "Summer 2025",
-    location: "City, ST",
+    company: "Mercor",
+    role: "Machine Learning Engineer Intern",
+    period: "Nov 2025 — Jan 2026",
+    location: "San Francisco, CA",
     description:
-      "Placeholder description — replace with what you actually built and the impact it had.",
+      "Reviewed and validated ML evaluation pipelines for a leading AI research lab — debugging code-generation workflows and authoring reproducible test cases at scale.",
     highlights: [
-      "Highlight one — the what and the so-what.",
-      "Highlight two — quantified outcome where possible.",
-      "Highlight three — anything you owned end-to-end.",
+      "Debugged and validated 500+ ML model evaluation nodes for a leading AI research lab, identifying logic errors, runtime failures, and edge-case breakdowns across code-generation workflows.",
+      "Built Python and Git-based QC automation to batch-review model outputs, track revision history, and flag failed submissions across large-scale evaluation pipelines.",
+      "Authored reproducible test cases and structured review criteria for coding, NLP, and multimodal tasks, improving consistency of model-quality analysis.",
     ],
-    stack: ["TypeScript", "React", "Node.js", "PostgreSQL"],
+    stack: ["Python", "Git", "LLM Evaluation", "NLP", "Test Automation"],
+    link: "https://mercor.com",
   },
   {
-    company: "Georgia Tech",
-    role: "Undergraduate Teaching Assistant",
-    period: "2025 — Present",
+    company: "Georgia Tech Research Institute",
+    role: "Software Engineer Intern",
+    period: "May 2024 — Aug 2024",
     location: "Atlanta, GA",
     description:
-      "Placeholder — supporting [course placeholder]. Hosted office hours, graded assignments, and helped students debug.",
+      "Built a serverless weather mesonet on AWS — ingesting sensor telemetry from the field and surfacing it to researchers via an interactive dashboard.",
     highlights: [
-      "Mentored ~N students per semester through office hours.",
-      "Designed/improved problem sets or test cases for [topic].",
-      "Collaborated with course staff on curriculum updates.",
+      "Architected a serverless AWS weather mesonet ingesting data from 100+ IoT sensors and handling 5,000+ requests/min using Lambda, DynamoDB, and event-driven pipelines.",
+      "Built a React + AWS Amplify dashboard to visualize historical weather patterns, reducing data interpretation time by 30%.",
     ],
-    stack: ["Java", "C", "Algorithms"],
+    stack: ["AWS Lambda", "DynamoDB", "AWS Amplify", "React", "IoT"],
+    link: "https://gtri.gatech.edu",
   },
 ];
 
@@ -103,39 +101,38 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    title: "Project One",
-    blurb: "A short, punchy one-liner about what it does.",
+    title: "Director's Cut",
+    blurb: "AI movie-rewriting platform that turns audience reviews into alternate endings.",
     description:
-      "Placeholder — describe the problem you set out to solve, the approach you took, and the result. Replace with a real project.",
-    stack: ["Next.js", "TypeScript", "PostgreSQL", "tRPC"],
-    github: "https://github.com/mannanrajsingh",
-    demo: "#",
+      "Full-stack AI app that converts audience reviews into vector embeddings, clusters semantic complaints, and generates alternate movie endings grounded in retrieved feedback. Built with Sentence Transformers + Actian VectorAI for retrieval, FastAPI + React across ingestion, search, and rewrite workflows, and integrations with Supabase, Neo4j, Gemini, and ElevenLabs.",
+    stack: [
+      "FastAPI",
+      "React",
+      "Sentence Transformers",
+      "VectorAI",
+      "Supabase",
+      "Neo4j",
+      "Gemini",
+      "ElevenLabs",
+    ],
+    github: "https://github.com/msingh384/DirectorsCut-trial1",
     featured: true,
   },
   {
-    title: "Project Two",
-    blurb: "Another one-liner. Keep it specific and concrete.",
+    title: "Aware Droid",
+    blurb: "Context-aware Android automation driven by on-device sensor fusion.",
     description:
-      "Placeholder — what makes this interesting? Was there a hard technical challenge? Any benchmarks or scale notes?",
-    stack: ["Python", "FastAPI", "Redis", "Docker"],
-    github: "https://github.com/mannanrajsingh",
-    featured: true,
+      "Android app that streams IMU and ambient-light sensor data to infer user context in real time and automatically trigger actions like Do Not Disturb — all processed on-device for low latency and privacy.",
+    stack: ["Android", "Kotlin", "IMU", "Sensor Fusion", "On-device ML"],
+    github: "https://github.com/msingh384",
   },
   {
-    title: "Project Three",
-    blurb: "Something you built for fun or for class.",
+    title: "Time-Series Event Retrieval",
+    blurb: "Leakage-aware ECG retrieval benchmark across embedding strategies.",
     description:
-      "Placeholder — describe what it is, what you learned, and any links you want to share.",
-    stack: ["React Native", "Expo", "Supabase"],
-    github: "https://github.com/mannanrajsingh",
-  },
-  {
-    title: "Project Four",
-    blurb: "A systems / low-level / ML / infra project.",
-    description:
-      "Placeholder — feel free to delete or duplicate this card to match the actual count of things you want to feature.",
-    stack: ["C", "x86", "Linux"],
-    github: "https://github.com/mannanrajsingh",
+      "Built a leakage-aware ECG retrieval benchmark from MIT-BIH Arrhythmia records, converting beats into 361-sample windows for nearest-neighbor search. Compared GRP, UMAP, and supervised UMAP embeddings across time, frequency, and mixed representations — best Macro F1 ~0.73 with 64-dim GRP frequency embeddings.",
+    stack: ["Python", "scikit-learn", "UMAP", "GRP", "Signal Processing"],
+    github: "https://github.com/msingh384",
   },
 ];
 
@@ -152,22 +149,29 @@ export type Education = {
 export const education: Education[] = [
   {
     school: "Georgia Institute of Technology",
-    degree: "B.S. in Computer Science",
-    period: "2024 — 2028 (expected)",
+    degree: "B.S. + M.S. in Computer Science",
+    period: "Aug 2024 — Dec 2027",
     location: "Atlanta, GA",
-    gpa: "X.XX / 4.00",
+    gpa: "3.95 / 4.00",
     highlights: [
-      "Threads: [Intelligence + Systems & Architecture] (placeholder).",
-      "Activities: [club / org / hackathon placeholder].",
-      "Awards: [scholarship / dean's list / award placeholder].",
+      "Zell Miller Scholar.",
+      "Concentrations: Intelligence & People.",
+      "Co-author, PUMP Journal.",
+      "B.S. expected Dec 2026, M.S. expected Dec 2027.",
     ],
     coursework: [
       "Data Structures & Algorithms",
-      "Computer Organization",
       "Objects & Design",
-      "Discrete Math",
+      "Computer Organization",
+      "Automata & Complexity",
+      "Machine Learning",
+      "Artificial Intelligence",
+      "Deep Learning",
+      "Computer Vision",
+      "NLP",
+      "Applied Combinatorics",
       "Linear Algebra",
-      "Systems & Networks",
+      "Probability & Statistics",
     ],
   },
 ];
@@ -180,18 +184,41 @@ export type Skill = {
 export const skills: Skill[] = [
   {
     group: "Languages",
-    items: ["TypeScript", "Python", "Java", "C", "Go", "SQL"],
+    items: ["Python", "Java", "TypeScript", "JavaScript", "C/C++", "SQL", "Bash"],
   },
   {
     group: "Frameworks",
-    items: ["React", "Next.js", "Node.js", "FastAPI", "Spring", "React Native"],
+    items: [
+      "React",
+      "Node.js",
+      "Express",
+      "FastAPI",
+      "Django",
+      "Android SDK",
+      "Next.js",
+    ],
   },
   {
-    group: "Infrastructure",
-    items: ["AWS", "Docker", "Kubernetes", "PostgreSQL", "Redis", "Linux"],
+    group: "Cloud & Infra",
+    items: [
+      "AWS (Lambda, DynamoDB, Amplify)",
+      "Docker",
+      "Git",
+      "Linux",
+      "CI/CD",
+      "Event-Driven Architecture",
+    ],
   },
   {
-    group: "Tools",
-    items: ["Git", "Vercel", "GitHub Actions", "Figma", "Vim"],
+    group: "AI / ML",
+    items: [
+      "PyTorch",
+      "TensorFlow",
+      "scikit-learn",
+      "pandas",
+      "NumPy",
+      "Sentence Transformers",
+      "Vector Search",
+    ],
   },
 ];
