@@ -7,9 +7,6 @@ import { experiences } from "@/data/site";
 export default function Experience() {
   return (
     <section id="experience" className="relative py-24 sm:py-32">
-      {/* subtle accent line */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-
       <Container>
         <SectionHeading
           eyebrow="02 · Experience"

@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://mannanrajsingh.com"),
+  metadataBase: new URL("https://mannanrajsingh.vercel.app"),
   title: {
     default: "Mannan Raj Singh — Software Engineer",
     template: "%s · Mannan Raj Singh",

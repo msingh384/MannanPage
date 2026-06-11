@@ -20,7 +20,7 @@ export default function Hero() {
       </div>
 
       <Container>
-        <div className="flex flex-col items-start gap-8">
+        <div className="flex flex-col items-start gap-7">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -39,13 +39,10 @@ export default function Hero() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
             className="text-balance text-5xl font-semibold tracking-[-0.03em] text-zinc-50 sm:text-6xl md:text-7xl lg:text-[5.5rem] lg:leading-[1.02]"
           >
-            <span className="block">Hey, I'm </span>
-            <span className="gradient-text inline-block">{site.name}.</span>
+            <span className="text-zinc-400">Hey, I&apos;m </span>
+            <span className="gradient-text">{site.name}.</span>
             <span className="mt-2 block text-zinc-400">
-              I build software
-            </span>
-            <span className="block text-zinc-400">
-              that's{" "}
+              I build software that&apos;s{" "}
               <span className="text-zinc-50">fast</span>,{" "}
               <span className="text-zinc-50">thoughtful</span>, and{" "}
               <span className="text-zinc-50">robust</span>.
@@ -108,23 +105,33 @@ export default function Hero() {
               />
             </div>
           </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="mt-10 flex w-full items-center gap-6 border-t border-white/[0.06] pt-6 text-xs text-zinc-500"
-          >
-            <span className="font-mono uppercase tracking-[0.2em]">
-              Currently
-            </span>
-            <span className="hidden h-px flex-1 bg-gradient-to-r from-white/10 to-transparent sm:block" />
-            <span className="text-zinc-400">
-              Building things @ Amazon · Open to chats
-            </span>
-          </motion.div>
         </div>
       </Container>
+
+      {/* Subtle scroll cue */}
+      <motion.a
+        href="#about"
+        aria-label="Scroll to next section"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.8 }}
+        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-zinc-500 transition hover:text-zinc-300 sm:flex"
+      >
+        <span className="font-mono text-[10px] uppercase tracking-[0.25em]">
+          Scroll
+        </span>
+        <span className="relative grid size-7 place-items-center overflow-hidden rounded-full border border-white/10">
+          <motion.span
+            animate={{ y: [-8, 8, -8] }}
+            transition={{
+              duration: 2.4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="block size-1 rounded-full bg-zinc-300"
+          />
+        </span>
+      </motion.a>
     </section>
   );
 }
