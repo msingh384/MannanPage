@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
@@ -50,9 +51,17 @@ export default function Navbar() {
         <Link
           href="#top"
           className="group flex items-center gap-2.5 text-sm font-semibold tracking-tight"
+          aria-label={`${site.name} — home`}
         >
-          <span className="grid size-8 place-items-center rounded-lg bg-gradient-to-br from-violet-500/80 via-indigo-500/70 to-cyan-400/60 text-[11px] font-bold text-white shadow-lg shadow-violet-500/20 ring-1 ring-white/10 transition-transform group-hover:scale-105">
-            MR
+          <span className="relative grid size-8 place-items-center overflow-hidden rounded-full bg-gradient-to-br from-violet-500/40 via-indigo-500/30 to-cyan-400/30 shadow-lg shadow-violet-500/20 ring-1 ring-white/15 transition-transform group-hover:scale-105">
+            <Image
+              src="/avatar.jpg"
+              alt={site.name}
+              width={64}
+              height={64}
+              priority
+              className="size-full object-cover"
+            />
           </span>
           <span className="hidden text-zinc-100 sm:inline">{site.name}</span>
         </Link>
