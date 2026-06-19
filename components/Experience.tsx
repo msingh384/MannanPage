@@ -2,6 +2,7 @@ import { ArrowUpRight } from "lucide-react";
 import { Container } from "./ui/Container";
 import { Reveal } from "./ui/Reveal";
 import { SectionHeading } from "./ui/SectionHeading";
+import { Spotlight } from "./ui/Spotlight";
 import { experiences } from "@/data/site";
 
 export default function Experience() {
@@ -23,7 +24,8 @@ export default function Experience() {
                   <span className="size-1 rounded-full bg-violet-400" />
                 </span>
 
-                <div className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6 transition hover:border-white/15 hover:bg-white/[0.035] sm:p-8">
+                <div className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6 transition hover:border-white/15 hover:bg-white/[0.035] sm:p-8">
+                  <Spotlight size={500} color="rgba(139, 92, 246, 0.10)" />
                   <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
                     <h3 className="text-lg font-semibold tracking-tight text-zinc-50 sm:text-xl">
                       {exp.role}{" "}

@@ -4,6 +4,7 @@ import { ArrowUpRight, Sparkles } from "lucide-react";
 import { Container } from "./ui/Container";
 import { Reveal } from "./ui/Reveal";
 import { SectionHeading } from "./ui/SectionHeading";
+import { Spotlight } from "./ui/Spotlight";
 import { GithubIcon } from "./ui/Icons";
 import { projects, type Project } from "@/data/site";
 import { cn } from "@/lib/utils";
@@ -58,6 +59,7 @@ export default function Projects() {
 function FeaturedCard({ project }: { project: Project }) {
   return (
     <article className="card-glow group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.04] to-white/[0.01] p-7 transition hover:border-white/15 sm:p-8">
+      <Spotlight size={620} color="rgba(139, 92, 246, 0.14)" />
       {/* gradient halo on hover */}
       <div className="pointer-events-none absolute -inset-x-20 -top-32 h-64 bg-[radial-gradient(ellipse_at_center,_rgba(139,92,246,0.18)_0%,_transparent_60%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
@@ -126,6 +128,7 @@ function FeaturedCard({ project }: { project: Project }) {
 function ProjectCard({ project }: { project: Project }) {
   return (
     <article className="card-glow group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6 transition hover:border-white/15 hover:bg-white/[0.035] sm:p-7">
+      <Spotlight size={420} color="rgba(139, 92, 246, 0.10)" />
       <div className="pointer-events-none absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-violet-400/40 to-transparent opacity-0 transition group-hover:opacity-100" />
 
       <div className="flex items-start justify-between gap-4">

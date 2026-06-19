@@ -2,6 +2,7 @@ import { GraduationCap, MapPin } from "lucide-react";
 import { Container } from "./ui/Container";
 import { Reveal } from "./ui/Reveal";
 import { SectionHeading } from "./ui/SectionHeading";
+import { Spotlight } from "./ui/Spotlight";
 import { education } from "@/data/site";
 
 export default function Education() {
@@ -17,7 +18,8 @@ export default function Education() {
         <div className="mt-14 space-y-6">
           {education.map((e, i) => (
             <Reveal key={e.school} delay={i * 0.06}>
-              <article className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6 transition hover:border-white/15 sm:p-8">
+              <article className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6 transition hover:border-white/15 sm:p-8">
+                <Spotlight size={520} color="rgba(245, 158, 11, 0.08)" />
                 <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
                   <div className="flex items-start gap-4">
                     <div className="grid size-12 shrink-0 place-items-center rounded-xl border border-white/10 bg-gradient-to-br from-amber-400/20 via-rose-400/10 to-violet-500/20 text-amber-200 shadow-inner">
