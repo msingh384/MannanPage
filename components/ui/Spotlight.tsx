@@ -4,18 +4,23 @@ import { useEffect, useRef, useState } from "react";
 
 type Props = {
   size?: number;
+  /** Primary color near the cursor (e.g. violet). */
   color?: string;
+  /** Optional secondary tint blended further from the cursor. */
+  accent?: string;
   className?: string;
 };
 
 /**
- * Drop inside any relatively-positioned card. Listens for mouse moves on the
- * parent and renders a radial gradient at the cursor position. Uses CSS
- * variables for performance (no React re-render on every mouse move).
+ * Drop inside any relatively-positioned, overflow-hidden card. Listens for
+ * mouse moves on the parent and renders a multi-stop radial gradient at the
+ * cursor position. Uses CSS variables for performance (no React re-render
+ * on every mouse move).
  */
 export function Spotlight({
   size = 480,
-  color = "rgba(139, 92, 246, 0.12)",
+  color = "rgba(139, 92, 246, 0.20)",
+  accent = "rgba(34, 211, 238, 0.10)",
   className,
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
@@ -50,6 +55,11 @@ export function Spotlight({
     };
   }, []);
 
+  const gradient = [
+    `radial-gradient(${size}px circle at var(--mx, 50%) var(--my, 50%), ${color} 0%, ${accent} 35%, transparent 65%)`,
+    `radial-gradient(${size * 0.45}px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, 0.06), transparent 60%)`,
+  ].join(", ");
+
   return (
     <div
       ref={ref}
@@ -62,7 +72,7 @@ export function Spotlight({
         .join(" ")}
       style={{
         opacity: hovered ? 1 : 0,
-        background: `radial-gradient(${size}px circle at var(--mx, 50%) var(--my, 50%), ${color}, transparent 45%)`,
+        background: gradient,
       }}
     />
   );

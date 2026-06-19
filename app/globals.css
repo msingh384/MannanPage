@@ -170,6 +170,13 @@ body {
   background-size: 100% 1px;
 }
 
+/* Hide native cursor when our custom cursor is active */
+html.has-custom-cursor,
+html.has-custom-cursor body,
+html.has-custom-cursor body * {
+  cursor: none;
+}
+
 /* Reduce motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

@@ -25,7 +25,11 @@ export default function Experience() {
                 </span>
 
                 <div className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6 transition hover:border-white/15 hover:bg-white/[0.035] sm:p-8">
-                  <Spotlight size={500} color="rgba(139, 92, 246, 0.10)" />
+                  <Spotlight
+                    size={560}
+                    color="rgba(139, 92, 246, 0.22)"
+                    accent="rgba(34, 211, 238, 0.10)"
+                  />
                   <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
                     <h3 className="text-lg font-semibold tracking-tight text-zinc-50 sm:text-xl">
                       {exp.role}{" "}
