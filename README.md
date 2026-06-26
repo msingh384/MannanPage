@@ -1,7 +1,6 @@
-# personal-website
+# Personal Website
 
-My personal site — Next.js + TypeScript + Tailwind v4 + Framer Motion.
-Dark, modern, and built to be edited from a single data file.
+
 
 ## Stack
 
