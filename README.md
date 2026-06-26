@@ -1,6 +1,6 @@
 # Personal Website
 
-
+Hi my name is Mannan Raj Singh and here is my [personal website](https://mannanrajsingh.vercel.app/). Curently it is hosted on vercel (for free) 
 
 ## Stack
 
