@@ -13,10 +13,18 @@ export default function Navbar() {
   const [active, setActive] = useState<string>("");
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    const onScroll = () => {
+      const landing = document.getElementById("top");
+      const threshold = landing ? landing.offsetHeight - window.innerHeight * 0.35 : 12;
+      setScrolled(window.scrollY > threshold);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   useEffect(() => {
@@ -40,11 +48,13 @@ export default function Navbar() {
 
   return (
     <header
+      inert={!scrolled}
+      aria-hidden={!scrolled}
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-500",
         scrolled
           ? "border-b border-white/10 bg-background/70 backdrop-blur-xl"
-          : "border-b border-transparent",
+          : "pointer-events-none -translate-y-full opacity-0 border-b border-transparent",
       )}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 sm:px-8">

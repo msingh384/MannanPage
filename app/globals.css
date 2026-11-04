@@ -184,3 +184,81 @@ html.has-custom-cursor body * {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Full-height opening: restrained type with visible indigo-blue lighting. */
+.landing {
+  position: relative;
+  height: 145svh;
+  background: #080a14;
+}
+.landing-stage {
+  position: sticky;
+  top: 0;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  height: 100svh;
+  overflow: hidden;
+  padding: 2rem 1.5rem;
+}
+.landing-light {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 58% 65% at 22% 50%, rgba(79, 70, 229, 0.29), transparent 78%),
+    radial-gradient(ellipse 48% 62% at 84% 55%, rgba(37, 99, 235, 0.21), transparent 78%),
+    radial-gradient(ellipse 80% 45% at 50% 100%, rgba(99, 102, 241, 0.14), transparent 80%);
+}
+.landing-horizon {
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #626bd575, #659ce65c, transparent);
+}
+.landing-content { width: 100%; text-align: center; }
+.landing-name {
+  margin: 0;
+  font-size: clamp(2.6rem, 8.5vw, 8rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.055em;
+  color: #eef0ff;
+  text-shadow: 0 2px 50px rgba(129, 140, 248, 0.18);
+}
+@media (max-width: 540px) {
+  .landing-name { max-width: 8em; margin-inline: auto; font-size: clamp(3.2rem, 12vw, 4.5rem); }
+}
+:focus-visible { outline: 2px solid #a5b4fc; outline-offset: 5px; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+.landing-scroll {
+  position: absolute;
+  bottom: max(2.5rem, env(safe-area-inset-bottom));
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: #a5aecb;
+  font-size: 10px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.scroll-track { position: relative; width: 1px; height: 42px; background: #a5b4fc24; overflow: hidden; }
+.scroll-track span { position: absolute; width: 1px; height: 20px; background: #b6c4ff; animation: scroll-cue 2s ease-in-out infinite; }
+@keyframes scroll-cue {
+  0% { transform: translateY(-22px); opacity: 0; }
+  25% { opacity: 1; }
+  80%, 100% { transform: translateY(44px); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .landing { height: 100svh; }
+  .landing-stage { position: relative; }
+  .scroll-track span { animation: none; top: 10px; }
+}
