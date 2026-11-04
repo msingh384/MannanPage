@@ -8,10 +8,10 @@ export const site = {
   shortName: "Mannan",
   role: "Software Engineer",
   tagline:
-    "CS student at Georgia Tech building software that's fast, thoughtful, and robust.",
+    "CS senior at Georgia Tech building software that's fast, thoughtful, and robust.",
   location: "Atlanta, GA · Austin, TX",
   status: {
-    label: "Former Amazon SDE Intern · Summer 2026",
+    label: "Georgia Tech Senior",
     available: true,
   },
   email: "mannanraj13@gmail.com",

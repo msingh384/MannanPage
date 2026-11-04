@@ -12,7 +12,7 @@ export default function About() {
             <SectionHeading
               eyebrow="01 · About"
               title="A quick intro."
-              description="I&apos;m a CS student who likes building tools that feel inevitable — software where you stop noticing the software."
+              description="I&apos;m a CS senior who likes building tools that feel inevitable — software where you stop noticing the software."
             />
           </div>
 
@@ -25,18 +25,17 @@ export default function About() {
               applied ML.
             </p>
             <p>
-              Right now I&apos;m a Computer Science undergrad at{" "}
+              Right now I&apos;m a Computer Science senior at{" "}
               <span className="text-zinc-100">Georgia Tech</span>. I completed a
               Software Development Engineer internship at{" "}
               <span className="text-zinc-100">Amazon</span> in summer 2026,
               working on B2B Payments.
-              Outside of school and work I&apos;m usually shipping side projects,
-              reading systems papers, or reviewing PRs for friends.
             </p>
-            <p className="text-zinc-500">
-              <span className="text-zinc-300">Quick placeholder section</span> —
-              swap this prose with whatever feels right when you have your
-              specifics ready.
+            <p>
+              Outside of school and work, I enjoy playing sports and getting out
+              on the golf course. I&apos;m also involved around Georgia Tech
+              through Greek life, the Sikh Students Association, and student
+              government.
             </p>
 
             <div className="!mt-10 grid gap-4 sm:grid-cols-2">

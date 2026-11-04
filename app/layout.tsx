@@ -24,12 +24,12 @@ export const metadata: Metadata = {
     template: "%s · Mannan Raj Singh",
   },
   description:
-    "Computer Science student at Georgia Tech, former Software Development Engineer Intern at Amazon. Building modern, performant software.",
+    "Computer Science senior at Georgia Tech. Building modern, performant software.",
   keywords: [
     "Mannan Raj Singh",
     "Software Engineer",
     "Georgia Tech",
-    "Former Amazon SDE Intern",
+    "Georgia Tech Senior",
     "Full Stack Developer",
     "Portfolio",
   ],
@@ -39,14 +39,14 @@ export const metadata: Metadata = {
     type: "website",
     title: "Mannan Raj Singh — Software Engineer",
     description:
-      "Computer Science student at Georgia Tech, former Software Development Engineer Intern at Amazon.",
+      "Computer Science senior at Georgia Tech.",
     siteName: "Mannan Raj Singh",
   },
   twitter: {
     card: "summary_large_image",
     title: "Mannan Raj Singh — Software Engineer",
     description:
-      "Computer Science student at Georgia Tech, former Software Development Engineer Intern at Amazon.",
+      "Computer Science senior at Georgia Tech.",
   },
   robots: {
     index: true,

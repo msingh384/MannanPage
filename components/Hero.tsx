@@ -55,8 +55,7 @@ export default function Hero() {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
             className="max-w-xl text-pretty text-base leading-relaxed text-zinc-400 sm:text-lg"
           >
-            CS undergrad at <Highlight>Georgia Tech</Highlight> and former
-            Software Development Engineer Intern at <Highlight>Amazon</Highlight>. I care about clean
+            CS senior at <Highlight>Georgia Tech</Highlight>. I care about clean
             systems, sharp UI, and shipping things people actually want to use.
           </motion.p>
 
