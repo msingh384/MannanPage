@@ -11,23 +11,28 @@ export default function Hero() {
     target: section,
     offset: ["start start", "end end"],
   });
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.9], [1, 1, 0]);
-  const y = useTransform(scrollYProgress, [0, 1], [0, -70]);
+  const opacity = useTransform(scrollYProgress, [0, 0.45, 1], [1, 0.9, 0]);
+  const y = useTransform(scrollYProgress, [0, 1], ["0svh", "-75svh"]);
+  const cueOpacity = useTransform(scrollYProgress, [0, 0.25], [1, 0]);
 
   return (
     <section ref={section} id="top" className="landing">
       <div className="landing-stage">
-        <div className="landing-light" aria-hidden="true" />
         <motion.div
           className="landing-content"
           style={reducedMotion ? undefined : { opacity, y }}
         >
           <h1 className="landing-name">{site.name}</h1>
         </motion.div>
-        <a className="landing-scroll" href="#about" aria-label="Scroll to about me">
+        <motion.a
+          className="landing-scroll"
+          href="#about"
+          aria-label="Scroll to about me"
+          style={reducedMotion ? undefined : { opacity: cueOpacity }}
+        >
           <span className="scroll-track" aria-hidden="true"><span /></span>
           <span>Scroll to explore</span>
-        </a>
+        </motion.a>
       </div>
     </section>
   );

@@ -27,6 +27,8 @@ html {
 }
 
 body {
+  position: relative;
+  isolation: isolate;
   background: var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-sans), Inter, system-ui, sans-serif;
@@ -185,11 +187,11 @@ html.has-custom-cursor body * {
   }
 }
 
-/* Full-height opening: restrained type with visible indigo-blue lighting. */
+/* Full-height opening with high-contrast type and a scroll-driven exit. */
 .landing {
   position: relative;
   height: 145svh;
-  background: #080a14;
+  background: transparent;
 }
 .landing-stage {
   position: sticky;
@@ -201,23 +203,6 @@ html.has-custom-cursor body * {
   overflow: hidden;
   padding: 2rem 1.5rem;
 }
-.landing-light {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background:
-    radial-gradient(ellipse 58% 65% at 22% 50%, rgba(79, 70, 229, 0.29), transparent 78%),
-    radial-gradient(ellipse 48% 62% at 84% 55%, rgba(37, 99, 235, 0.21), transparent 78%),
-    radial-gradient(ellipse 80% 45% at 50% 100%, rgba(99, 102, 241, 0.14), transparent 80%);
-}
-.landing-horizon {
-  position: absolute;
-  bottom: 0;
-  left: 10%;
-  right: 10%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #626bd575, #659ce65c, transparent);
-}
 .landing-content { width: 100%; text-align: center; }
 .landing-name {
   margin: 0;
@@ -225,8 +210,7 @@ html.has-custom-cursor body * {
   font-weight: 500;
   line-height: 1.15;
   letter-spacing: -0.055em;
-  color: #eef0ff;
-  text-shadow: 0 2px 50px rgba(129, 140, 248, 0.18);
+  color: #ffffff;
 }
 @media (max-width: 540px) {
   .landing-name { max-width: 8em; margin-inline: auto; font-size: clamp(3.2rem, 12vw, 4.5rem); }
@@ -245,13 +229,13 @@ html.has-custom-cursor body * {
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  color: #a5aecb;
+  color: #a1a1aa;
   font-size: 10px;
   letter-spacing: .16em;
   text-transform: uppercase;
 }
-.scroll-track { position: relative; width: 1px; height: 42px; background: #a5b4fc24; overflow: hidden; }
-.scroll-track span { position: absolute; width: 1px; height: 20px; background: #b6c4ff; animation: scroll-cue 2s ease-in-out infinite; }
+.scroll-track { position: relative; width: 1px; height: 42px; background: #ffffff24; overflow: hidden; }
+.scroll-track span { position: absolute; width: 1px; height: 20px; background: #d4d4d8; animation: scroll-cue 2s ease-in-out infinite; }
 @keyframes scroll-cue {
   0% { transform: translateY(-22px); opacity: 0; }
   25% { opacity: 1; }
@@ -262,3 +246,17 @@ html.has-custom-cursor body * {
   .landing-stage { position: relative; }
   .scroll-track span { animation: none; top: 10px; }
 }
+
+/* One quiet sky behind the landing, content, and footer. */
+.space-background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 16% 24%, rgba(57, 69, 115, 0.075), transparent 55%),
+    radial-gradient(ellipse at 88% 78%, rgba(68, 55, 105, 0.055), transparent 55%),
+    #08080b;
+}
+.space-stars { display: block; width: 100%; height: 100%; }
