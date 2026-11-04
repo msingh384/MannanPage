@@ -12,7 +12,7 @@ export default function About() {
             <SectionHeading
               eyebrow="01 · About"
               title="A quick intro."
-              description="I'm a CS student who likes building tools that feel inevitable — software where you stop noticing the software."
+              description="I&apos;m a CS student who likes building tools that feel inevitable — software where you stop noticing the software."
             />
           </div>
 
@@ -20,15 +20,17 @@ export default function About() {
             <p>
               I started writing code seriously in high school and got hooked
               after my first time deploying something real to the internet.
-              Since then I've worked across the stack — backend services,
+              Since then I&apos;ve worked across the stack — backend services,
               full-stack apps, a bit of low-level systems, and increasingly
               applied ML.
             </p>
             <p>
-              Right now I'm a Computer Science undergrad at{" "}
-              <span className="text-zinc-100">Georgia Tech</span>, interning at{" "}
-              <span className="text-zinc-100">Amazon</span> for the summer.
-              Outside of school and work I'm usually shipping side projects,
+              Right now I&apos;m a Computer Science undergrad at{" "}
+              <span className="text-zinc-100">Georgia Tech</span>. I completed a
+              Software Development Engineer internship at{" "}
+              <span className="text-zinc-100">Amazon</span> in summer 2026,
+              working on B2B Payments.
+              Outside of school and work I&apos;m usually shipping side projects,
               reading systems papers, or reviewing PRs for friends.
             </p>
             <p className="text-zinc-500">

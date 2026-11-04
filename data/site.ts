@@ -11,7 +11,7 @@ export const site = {
     "CS student at Georgia Tech building software that's fast, thoughtful, and robust.",
   location: "Atlanta, GA · Austin, TX",
   status: {
-    label: "Interning at Amazon · Summer 2026",
+    label: "Former Amazon SDE Intern · Summer 2026",
     available: true,
   },
   email: "mannanraj13@gmail.com",
@@ -48,9 +48,9 @@ export const experiences: Experience[] = [
     period: "Jun 2026 — Aug 2026",
     location: "Austin, TX",
     description:
-      "Re-platforming the Save-and-Retrieve API behind Small Business Credit Card (SBCC) onboarding — migrating an encrypted data pipeline from the legacy Zima service to the Data Incubator Service (DIS).",
+      "Re-platformed the Save-and-Retrieve API behind Small Business Credit Card (SBCC) onboarding — migrated an encrypted data pipeline from the legacy Zima service to the Data Incubator Service (DIS).",
     highlights: [
-      "Leading end-to-end re-platforming of the Save-and-Retrieve API powering SBCC application onboarding, migrating the encrypted data pipeline from Zima to DIS.",
+      "Led end-to-end re-platforming of the Save-and-Retrieve API powering SBCC application onboarding, migrating the encrypted data pipeline from Zima to DIS.",
       "Re-architected secure storage and retrieval of customer PII used to pre-fill in-progress credit card applications, preserving end-to-end encryption across ingestion, persistence, and retrieval.",
       "Designed and built an event-driven email notification microservice that alerts customers within 5 days of saved-data expiration, reducing abandoned applications.",
       "Drove system design reviews, API contracts, and rollout strategy with senior engineers for a customer-facing service handling sensitive financial data at scale.",

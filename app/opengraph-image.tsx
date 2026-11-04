@@ -81,7 +81,7 @@ export default async function OGImage() {
               maxWidth: 900,
             }}
           >
-            {site.role} · Georgia Tech CS · Amazon Intern
+            {site.role} · Georgia Tech CS · Former Amazon Intern
           </div>
         </div>
 

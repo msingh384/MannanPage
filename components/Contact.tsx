@@ -21,10 +21,10 @@ export default function Contact() {
             </span>
 
             <h2 className="mt-5 text-balance text-3xl font-semibold tracking-tight text-zinc-50 sm:text-4xl md:text-5xl">
-              Let's build something together.
+              Let&apos;s build something together.
             </h2>
             <p className="mx-auto mt-4 max-w-md text-pretty text-zinc-400">
-              I'm open to internship chats, side project collabs, or just
+              I&apos;m open to internship chats, side project collabs, or just
               talking shop. The fastest way to reach me is email.
             </p>
 
