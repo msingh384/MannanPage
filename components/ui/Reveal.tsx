@@ -1,36 +1,38 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
-import type { ReactNode } from "react";
+import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
+import { useRef, type ReactNode } from "react";
 
 type Props = {
   children: ReactNode;
   delay?: number;
   y?: number;
   className?: string;
-  once?: boolean;
 };
 
 export function Reveal({
   children,
   delay = 0,
-  y = 20,
+  y = 32,
   className,
-  once = true,
 }: Props) {
+  const element = useRef<HTMLDivElement>(null);
   const reducedMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: element,
+    offset: ["start end", "start 0.65"],
+  });
+  // Keep staggered cards tied to scrolling, rather than a timed entrance.
+  const start = Math.min(delay, 0.2);
+  const translateY = useTransform(scrollYProgress, [start, 1], [y, 0]);
+  const smoothY = useSpring(translateY, { stiffness: 220, damping: 32, mass: 0.4 });
+  const opacity = useTransform(scrollYProgress, [start, 0.85], [0.35, 1]);
 
   return (
     <motion.div
+      ref={element}
       className={className}
-      initial={reducedMotion ? false : { opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once, amount: 0.1 }}
-      transition={{
-        duration: reducedMotion ? 0 : 0.7,
-        delay: reducedMotion ? 0 : delay,
-        ease: [0.16, 1, 0.3, 1],
-      }}
+      style={reducedMotion ? undefined : { y: smoothY, opacity }}
     >
       {children}
     </motion.div>
