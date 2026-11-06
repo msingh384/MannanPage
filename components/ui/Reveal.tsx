@@ -14,7 +14,7 @@ type Props = {
   as?: "div" | "li";
 };
 
-/** Reveal once, then leave the content stable and fully readable. */
+/** Replay on re-entry; reset only after the entire block leaves the viewport. */
 export function Reveal({
   children,
   delay = 0,
@@ -26,7 +26,7 @@ export function Reveal({
   const reducedMotion = useReducedMotion();
   const Element = as === "li" ? motion.li : motion.div;
   const variants: Variants = {
-    hidden: { opacity: 0, x, y },
+    hidden: { opacity: 0, x, y, transition: { duration: 0.2, ease } },
     visible: {
       opacity: 1,
       x: 0,
@@ -46,7 +46,7 @@ export function Reveal({
       className={className}
       initial={reducedMotion ? false : "hidden"}
       whileInView="visible"
-      viewport={{ once: true, amount: 0.08, margin: "0px 0px -40px 0px" }}
+      viewport={{ once: false, amount: "some" }}
       variants={reducedMotion ? {} : variants}
     >
       {children}
@@ -64,7 +64,7 @@ export function RevealItem({ children, className }: {
     <motion.div
       className={className}
       variants={reducedMotion ? {} : {
-        hidden: { opacity: 0, y: 12 },
+        hidden: { opacity: 0, y: 12, transition: { duration: 0.2, ease } },
         visible: {
           opacity: 1,
           y: 0,

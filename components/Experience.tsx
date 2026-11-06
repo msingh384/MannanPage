@@ -17,7 +17,7 @@ export default function Experience() {
 
         <ol className="relative mt-14 border-l border-white/[0.08]">
           {experiences.map((exp, i) => (
-            <Reveal as="li" key={exp.company + exp.period} x={20} y={16} delay={i * 0.04}>
+            <Reveal as="li" key={exp.company + exp.period} delay={i * 0.06}>
               <div className="group relative pb-12 pl-8">
                 {/* Timeline marker */}
                 <span className="absolute -left-[5px] top-1.5 grid size-2.5 place-items-center rounded-full bg-zinc-950 ring-2 ring-white/20 transition group-hover:ring-violet-400/70">

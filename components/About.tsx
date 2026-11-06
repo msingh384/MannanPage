@@ -1,5 +1,5 @@
 import { Container } from "./ui/Container";
-import { Reveal, RevealItem } from "./ui/Reveal";
+import { Reveal } from "./ui/Reveal";
 import { SectionHeading } from "./ui/SectionHeading";
 import { skills } from "@/data/site";
 
@@ -16,8 +16,8 @@ export default function About() {
             />
           </div>
 
-          <Reveal x={18} y={16} className="space-y-5 text-pretty text-base leading-relaxed text-zinc-400 sm:text-lg lg:col-span-7">
-            <RevealItem>
+          <div className="space-y-5 text-pretty text-base leading-relaxed text-zinc-400 sm:text-lg lg:col-span-7">
+            <Reveal>
               <p>
                 I started writing code seriously in high school and got hooked
                 after my first time deploying something real to the internet.
@@ -25,8 +25,8 @@ export default function About() {
                 full-stack apps, a bit of low-level systems, and increasingly
                 applied ML.
               </p>
-            </RevealItem>
-            <RevealItem>
+            </Reveal>
+            <Reveal>
               <p>
                 Right now I&apos;m a Computer Science senior at{" "}
                 <span className="text-zinc-100">Georgia Tech</span>. I completed a
@@ -34,19 +34,19 @@ export default function About() {
                 <span className="text-zinc-100">Amazon</span> in summer 2026,
                 working on B2B Payments.
               </p>
-            </RevealItem>
-            <RevealItem>
+            </Reveal>
+            <Reveal>
               <p>
                 Outside of school and work, I enjoy playing sports and getting out
                 on the golf course. I&apos;m also involved around Georgia Tech
                 through Greek life, the Sikh Students Association, and student
                 government.
               </p>
-            </RevealItem>
+            </Reveal>
 
             <div className="!mt-10 grid gap-4 sm:grid-cols-2">
               {skills.map((group) => (
-                <RevealItem
+                <Reveal
                   key={group.group}
                   className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-5"
                 >
@@ -63,10 +63,10 @@ export default function About() {
                       </li>
                     ))}
                   </ul>
-                </RevealItem>
+                </Reveal>
               ))}
             </div>
-          </Reveal>
+          </div>
         </div>
       </Container>
     </section>
