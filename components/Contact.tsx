@@ -1,6 +1,6 @@
 import { ArrowUpRight, Mail } from "lucide-react";
 import { Container } from "./ui/Container";
-import { Reveal } from "./ui/Reveal";
+import { Reveal, RevealItem } from "./ui/Reveal";
 import { GithubIcon, LinkedinIcon } from "./ui/Icons";
 import { site } from "@/data/site";
 
@@ -16,49 +16,53 @@ export default function Contact() {
               <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-cyan-400/10 blur-3xl" />
             </div>
 
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 font-mono text-[11px] uppercase tracking-[0.2em] text-zinc-300">
-              05 · Contact
-            </span>
+            <RevealItem>
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 font-mono text-[11px] uppercase tracking-[0.2em] text-zinc-300">
+                05 · Contact
+              </span>
+            </RevealItem>
+            <RevealItem>
+              <h2 className="mt-5 text-balance text-3xl font-semibold tracking-tight text-zinc-50 sm:text-4xl md:text-5xl">
+                Let&apos;s build something together.
+              </h2>
+              <p className="mx-auto mt-4 max-w-md text-pretty text-zinc-400">
+                I&apos;m open to internship chats, side project collabs, or just
+                talking shop. The fastest way to reach me is email.
+              </p>
+            </RevealItem>
+            <RevealItem>
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+                <a
+                  href={`mailto:${site.email}`}
+                  className="group inline-flex items-center gap-2 rounded-full bg-zinc-50 px-5 py-2.5 text-sm font-semibold text-zinc-950 shadow-[0_0_0_1px_rgba(255,255,255,0.1),0_8px_30px_rgba(139,92,246,0.25)] transition hover:bg-white"
+                >
+                  <Mail size={16} />
+                  {site.email}
+                  <ArrowUpRight
+                    size={16}
+                    className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  />
+                </a>
+              </div>
 
-            <h2 className="mt-5 text-balance text-3xl font-semibold tracking-tight text-zinc-50 sm:text-4xl md:text-5xl">
-              Let&apos;s build something together.
-            </h2>
-            <p className="mx-auto mt-4 max-w-md text-pretty text-zinc-400">
-              I&apos;m open to internship chats, side project collabs, or just
-              talking shop. The fastest way to reach me is email.
-            </p>
-
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              <a
-                href={`mailto:${site.email}`}
-                className="group inline-flex items-center gap-2 rounded-full bg-zinc-50 px-5 py-2.5 text-sm font-semibold text-zinc-950 shadow-[0_0_0_1px_rgba(255,255,255,0.1),0_8px_30px_rgba(139,92,246,0.25)] transition hover:bg-white"
-              >
-                <Mail size={16} />
-                {site.email}
-                <ArrowUpRight
-                  size={16}
-                  className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              <div className="mt-6 flex items-center justify-center gap-1.5 text-zinc-300">
+                <SocialIcon
+                  href={site.socials.github}
+                  label="GitHub"
+                  icon={<GithubIcon size={16} />}
                 />
-              </a>
-            </div>
-
-            <div className="mt-6 flex items-center justify-center gap-1.5 text-zinc-300">
-              <SocialIcon
-                href={site.socials.github}
-                label="GitHub"
-                icon={<GithubIcon size={16} />}
-              />
-              <SocialIcon
-                href={site.socials.linkedin}
-                label="LinkedIn"
-                icon={<LinkedinIcon size={16} />}
-              />
-              <SocialIcon
-                href={site.resumeUrl}
-                label="Resume"
-                icon={<span className="text-[11px] font-semibold">CV</span>}
-              />
-            </div>
+                <SocialIcon
+                  href={site.socials.linkedin}
+                  label="LinkedIn"
+                  icon={<LinkedinIcon size={16} />}
+                />
+                <SocialIcon
+                  href={site.resumeUrl}
+                  label="Resume"
+                  icon={<span className="text-[11px] font-semibold">CV</span>}
+                />
+              </div>
+            </RevealItem>
           </div>
         </Reveal>
       </Container>
