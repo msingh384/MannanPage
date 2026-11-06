@@ -30,7 +30,7 @@ export default function Projects() {
             )}
           >
             {featured.map((p, i) => (
-              <Reveal key={p.title} delay={i * 0.06}>
+              <Reveal key={p.title} x={i % 2 === 0 ? -36 : 36} y={24} delay={i * 0.06}>
                 <FeaturedCard project={p} />
               </Reveal>
             ))}
@@ -45,7 +45,7 @@ export default function Projects() {
             )}
           >
             {others.map((p, i) => (
-              <Reveal key={p.title} delay={i * 0.06}>
+              <Reveal key={p.title} x={i % 2 === 0 ? -36 : 36} y={24} delay={i * 0.06}>
                 <ProjectCard project={p} />
               </Reveal>
             ))}

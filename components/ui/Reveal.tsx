@@ -19,7 +19,7 @@ export function Reveal({
   children,
   delay = 0,
   x = 0,
-  y = 26,
+  y = 38,
   className,
   as = "div",
 }: Props) {
@@ -32,11 +32,11 @@ export function Reveal({
       x: 0,
       y: 0,
       transition: {
-        duration: 0.7,
+        duration: 0.8,
         ease,
         delay,
         delayChildren: delay + 0.06,
-        staggerChildren: 0.075,
+        staggerChildren: 0.09,
       },
     },
   };
@@ -64,11 +64,11 @@ export function RevealItem({ children, className }: {
     <motion.div
       className={className}
       variants={reducedMotion ? {} : {
-        hidden: { opacity: 0, y: 12, transition: { duration: 0.2, ease } },
+        hidden: { opacity: 0, y: 18, transition: { duration: 0.2, ease } },
         visible: {
           opacity: 1,
           y: 0,
-          transition: { duration: 0.55, ease },
+          transition: { duration: 0.6, ease },
         },
       }}
     >

@@ -17,7 +17,7 @@ export default function Education() {
 
         <div className="mt-14 space-y-6">
           {education.map((e, i) => (
-            <Reveal key={e.school} delay={i * 0.06}>
+            <Reveal key={e.school} x={-36} y={24} delay={i * 0.06}>
               <article className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6 transition hover:border-white/15 sm:p-8">
                 <Spotlight
                   size={580}

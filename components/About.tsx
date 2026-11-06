@@ -17,7 +17,7 @@ export default function About() {
           </div>
 
           <div className="space-y-5 text-pretty text-base leading-relaxed text-zinc-400 sm:text-lg lg:col-span-7">
-            <Reveal>
+            <Reveal x={24} y={24}>
               <p>
                 I started writing code seriously in high school and got hooked
                 after my first time deploying something real to the internet.
@@ -26,7 +26,7 @@ export default function About() {
                 applied ML.
               </p>
             </Reveal>
-            <Reveal>
+            <Reveal x={24} y={24}>
               <p>
                 Right now I&apos;m a Computer Science senior at{" "}
                 <span className="text-zinc-100">Georgia Tech</span>. I completed a
@@ -35,7 +35,7 @@ export default function About() {
                 working on B2B Payments.
               </p>
             </Reveal>
-            <Reveal>
+            <Reveal x={24} y={24}>
               <p>
                 Outside of school and work, I enjoy playing sports and getting out
                 on the golf course. I&apos;m also involved around Georgia Tech
@@ -45,9 +45,11 @@ export default function About() {
             </Reveal>
 
             <div className="!mt-10 grid gap-4 sm:grid-cols-2">
-              {skills.map((group) => (
+              {skills.map((group, i) => (
                 <Reveal
                   key={group.group}
+                  x={i % 2 === 0 ? -28 : 28}
+                  y={24}
                   className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-5"
                 >
                   <h3 className="font-mono text-[11px] uppercase tracking-[0.2em] text-zinc-500">
