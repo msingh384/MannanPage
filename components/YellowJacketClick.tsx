@@ -24,9 +24,8 @@ export default function YellowJacketClick() {
   useEffect(() => {
     const onClick = (event: MouseEvent) => {
       if (!(event.target instanceof Element)) return;
-      const control = event.target.closest<HTMLElement>("a[href], button, [role='button']");
-      if (!control || control.matches(":disabled, [aria-disabled='true']")) return;
-      const rect = control.getBoundingClientRect();
+      // Pointer clicks work anywhere; keyboard activations use the target's center.
+      const rect = event.target.getBoundingClientRect();
       setCelebration({
         id: ++sequence.current,
         x: clamp(event.detail === 0 ? rect.left + rect.width / 2 : event.clientX, 32, window.innerWidth - 32),
