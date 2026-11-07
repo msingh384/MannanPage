@@ -260,3 +260,28 @@ html.has-custom-cursor body * {
     #08080b;
 }
 .space-stars { display: block; width: 100%; height: 100%; }
+
+/* Click feedback stays above the page without blocking links or scrolling. */
+.yellow-jacket-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  overflow: hidden;
+}
+.yellow-jacket-flight {
+  position: absolute;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+}
+.yellow-jacket-wings {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: yellow-jacket-flutter 110ms ease-in-out infinite alternate;
+}
+@keyframes yellow-jacket-flutter {
+  from { transform: scaleY(0.65) rotate(-8deg); }
+  to { transform: scaleY(1) rotate(8deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .yellow-jacket-wings { animation: none; }
+}
