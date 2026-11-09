@@ -1,8 +1,8 @@
-import { ArrowUpRight, Mail } from "lucide-react";
 import { Container } from "./ui/Container";
 import { Reveal, RevealItem } from "./ui/Reveal";
 import { GithubIcon, LinkedinIcon } from "./ui/Icons";
 import { site } from "@/data/site";
+import EmailContact from "./EmailContact";
 
 export default function Contact() {
   return (
@@ -31,19 +31,7 @@ export default function Contact() {
               </p>
             </RevealItem>
             <RevealItem>
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-                <a
-                  href={`mailto:${site.email}`}
-                  className="group inline-flex items-center gap-2 rounded-full bg-zinc-50 px-5 py-2.5 text-sm font-semibold text-zinc-950 shadow-[0_0_0_1px_rgba(255,255,255,0.1),0_8px_30px_rgba(139,92,246,0.25)] transition hover:bg-white"
-                >
-                  <Mail size={16} />
-                  {site.email}
-                  <ArrowUpRight
-                    size={16}
-                    className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                  />
-                </a>
-              </div>
+              <EmailContact />
 
               <div className="mt-6 flex items-center justify-center gap-1.5 text-zinc-300">
                 <SocialIcon
