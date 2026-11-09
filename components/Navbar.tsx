@@ -1,156 +1,120 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import { navLinks, site } from "@/data/site";
 import { cn } from "@/lib/utils";
 
+const clamp = (n: number) => Math.max(0, Math.min(1, n));
+
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
+  const [position, setPosition] = useState({ visible: false, active: 0, progress: navLinks.map(() => 0) });
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState<string>("");
+  const menuButton = useRef<HTMLButtonElement>(null);
+  const mobilePanel = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const onScroll = () => {
-      const landing = document.getElementById("top");
-      const threshold = landing ? landing.offsetHeight - window.innerHeight * 0.35 : 12;
-      setScrolled(window.scrollY > threshold);
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const sections = navLinks.map(link => document.querySelector<HTMLElement>(link.href));
+      if (sections.some(section => !section)) return;
+      const scroll = window.scrollY;
+      const probe = scroll + window.innerHeight * 0.4;
+      const atBottom = scroll + window.innerHeight >= document.documentElement.scrollHeight - 4;
+      const starts = sections.map(section => section!.getBoundingClientRect().top + scroll);
+      const progress = sections.map((_, i) => {
+        const end = starts[i + 1] ?? document.documentElement.scrollHeight - window.innerHeight * 0.6;
+        return atBottom ? 1 : Math.round(clamp((probe - starts[i]) / Math.max(1, end - starts[i])) * 100);
+      });
+      const active = atBottom ? navLinks.length - 1 : Math.max(0, starts.findLastIndex(start => probe >= start));
+      const visible = probe >= starts[0];
+      setPosition(previous => previous.visible === visible && previous.active === active && previous.progress.every((value, i) => value === progress[i])
+        ? previous : { visible, active, progress });
+      if (!visible) setOpen(false);
     };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+    update();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    const observer = new ResizeObserver(schedule);
+    observer.observe(document.body);
     return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      cancelAnimationFrame(frame);
+      observer.disconnect();
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
     };
   }, []);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActive(`#${entry.target.id}`);
-          }
-        });
-      },
-      { rootMargin: "-40% 0px -55% 0px", threshold: 0 },
-    );
+    if (!open) return;
+    mobilePanel.current?.querySelector<HTMLAnchorElement>("a")?.focus();
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        menuButton.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open]);
 
-    navLinks.forEach((link) => {
-      const el = document.querySelector(link.href);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <header
-      inert={!scrolled}
-      aria-hidden={!scrolled}
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-500",
-        scrolled
-          ? "border-b border-white/10 bg-background/70 backdrop-blur-xl"
-          : "pointer-events-none -translate-y-full opacity-0 border-b border-transparent",
-      )}
-    >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 sm:px-8">
-        <Link
-          href="#top"
-          className="group flex items-center gap-2.5 text-sm font-semibold tracking-tight"
-          aria-label={`${site.name} — home`}
-        >
-          <span className="relative grid size-8 place-items-center overflow-hidden rounded-full bg-gradient-to-br from-violet-500/40 via-indigo-500/30 to-cyan-400/30 shadow-lg shadow-violet-500/20 ring-1 ring-white/15 transition-transform group-hover:scale-105">
-            <Image
-              src="/avatar.jpg"
-              alt={site.name}
-              width={64}
-              height={64}
-              priority
-              className="size-full object-cover"
-            />
-          </span>
-          <span className="hidden text-zinc-100 sm:inline">{site.name}</span>
-        </Link>
-
-        <ul className="hidden items-center gap-1 md:flex">
-          {navLinks.map((link) => {
-            const isActive = active === link.href;
-            return (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className={cn(
-                    "rounded-full px-3.5 py-1.5 text-sm transition-colors",
-                    isActive
-                      ? "bg-white/[0.06] text-zinc-50"
-                      : "text-zinc-400 hover:text-zinc-100",
-                  )}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-
-        <div className="hidden items-center gap-3 md:flex">
-          <a
-            href={site.resumeUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="group inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1.5 text-sm font-medium text-zinc-200 transition hover:border-white/20 hover:bg-white/[0.08]"
-          >
-            Resume
-            <span className="text-zinc-500 transition group-hover:translate-x-0.5 group-hover:text-zinc-300">
-              ↗
-            </span>
-          </a>
-        </div>
-
-        <button
-          aria-label="Toggle menu"
-          className="md:hidden rounded-md border border-white/10 bg-white/[0.04] p-2 text-zinc-300"
-          onClick={() => setOpen((s) => !s)}
-        >
-          {open ? <X size={18} /> : <Menu size={18} />}
-        </button>
-      </nav>
-
-      {/* Mobile menu */}
-      <div
-        className={cn(
-          "md:hidden overflow-hidden border-t border-white/10 bg-background/90 backdrop-blur-xl transition-[max-height] duration-300",
-          open ? "max-h-80" : "max-h-0",
-        )}
+  const total = Math.round(position.progress.reduce((sum, value) => sum + value, 0) / navLinks.length);
+  const links = (mobile = false) => (
+    <>
+      <a href="#top" className="rail-name" onClick={() => setOpen(false)}>{site.name}<span>Back to top ↑</span></a>
+      <ol
+        className="rail-links"
+        style={{ "--section-progress": Math.min(1, (position.active + position.progress[position.active] / 100) / (navLinks.length - 1)) } as CSSProperties}
       >
-        <ul className="px-6 py-3">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="block rounded-md px-2 py-2.5 text-sm text-zinc-300 hover:bg-white/[0.04] hover:text-zinc-50"
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-          <li>
+        {navLinks.map((link, i) => (
+          <li key={link.href}>
             <a
-              href={site.resumeUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="block rounded-md px-2 py-2.5 text-sm text-zinc-300 hover:bg-white/[0.04] hover:text-zinc-50"
+              href={link.href}
+              aria-current={position.active === i ? "location" : undefined}
+              className={cn("rail-link", position.active === i && "is-active")}
+              onClick={() => { setOpen(false); if (mobile) menuButton.current?.focus(); }}
             >
-              Resume ↗
+              <span aria-hidden="true" className={cn("rail-marker", i < position.active && "is-complete")} />
+              <span className="rail-index">0{i + 1}</span>
+              <span className="rail-label">{link.label}</span>
             </a>
           </li>
-        </ul>
+        ))}
+      </ol>
+      <div className="rail-footer">
+        <a href={site.resumeUrl} target="_blank" rel="noreferrer">Resume<ArrowUpRight size={13} /></a>
+        <div className="rail-reading" role="progressbar" aria-label="Page reading progress" aria-valuenow={total} aria-valuemin={0} aria-valuemax={100}>
+          <span>0{position.active + 1} / 05</span><span>{total}%</span>
+        </div>
       </div>
-    </header>
+    </>
+  );
+
+  return (
+    <>
+      <aside className={cn("side-navigation", !position.visible && "navigation-hidden")} inert={!position.visible} aria-hidden={!position.visible}>
+        <nav aria-label="Section navigation">{links()}</nav>
+      </aside>
+      <div className={cn("mobile-navigation", !position.visible && "navigation-hidden")} inert={!position.visible} aria-hidden={!position.visible}>
+        <button
+          ref={menuButton}
+          type="button"
+          className="mobile-menu-button"
+          aria-label={open ? "Close navigation" : "Open navigation"}
+          aria-expanded={open}
+          aria-controls="mobile-section-menu"
+          onClick={() => setOpen(value => !value)}
+        >
+          <span>{navLinks[position.active].label}</span>
+          <span className="text-zinc-500">0{position.active + 1}/05</span>
+          {open ? <X size={16} /> : <Menu size={16} />}
+        </button>
+        <nav ref={mobilePanel} id="mobile-section-menu" aria-label="Mobile section navigation" className="mobile-section-panel" hidden={!open} inert={!open}>
+          {links(true)}
+        </nav>
+      </div>
+    </>
   );
 }

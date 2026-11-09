@@ -10,16 +10,18 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Divider />
-      <About />
-      <Divider />
-      <Experience />
-      <Divider />
-      <Projects />
-      <Divider />
-      <Education />
-      <Divider />
-      <Contact />
+      <div className="site-content">
+        <Divider />
+        <About />
+        <Divider />
+        <Experience />
+        <Divider />
+        <Projects />
+        <Divider />
+        <Education />
+        <Divider />
+        <Contact />
+      </div>
     </>
   );
 }

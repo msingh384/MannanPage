@@ -6,7 +6,7 @@ import { site } from "@/data/site";
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="relative border-t border-white/[0.06] py-10">
+    <footer className="site-footer relative border-t border-white/[0.06] py-10">
       <Container>
         <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
           <div>
