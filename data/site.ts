@@ -97,12 +97,16 @@ export type Project = {
   github?: string;
   demo?: string;
   featured?: boolean;
+  image?: string;
+  imageAlt?: string;
 };
 
 export const projects: Project[] = [
   {
     title: "Director's Cut",
-    blurb: "AI movie-rewriting platform that turns audience reviews into alternate endings.",
+    image: "/projects/directors-cut.png",
+    imageAlt: "Director’s Cut showing an AI-generated alternate ending for Inception",
+    blurb: "Turns audience reviews into AI-generated alternate movie endings.",
     description:
       "Full-stack AI app that converts audience reviews into vector embeddings, clusters semantic complaints, and generates alternate movie endings grounded in retrieved feedback. Built with Sentence Transformers + Actian VectorAI for retrieval, FastAPI + React across ingestion, search, and rewrite workflows, and integrations with Supabase, Neo4j, Gemini, and ElevenLabs.",
     stack: [
@@ -119,8 +123,16 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    title: "NutriGO",
+    blurb: "AI meal logging, restaurant discovery, and collectible-card battles that make nutrition a game.",
+    description:
+      "Built with a team for the Claude Builder Club Hackathon in April 2026. Combines Claude-powered meal photo analysis, restaurant maps, collectible-card battles, and optional iMessage meal logging through SendBlue.",
+    stack: ["React", "TypeScript", "Claude", "Node.js"],
+    github: "https://github.com/msingh384/ClaudeHack",
+  },
+  {
     title: "Aware Droid",
-    blurb: "Context-aware Android automation driven by on-device sensor fusion.",
+    blurb: "Uses on-device sensor data to automate Android settings based on your surroundings.",
     description:
       "Android app that streams IMU and ambient-light sensor data to infer user context in real time and automatically trigger actions like Do Not Disturb — all processed on-device for low latency and privacy.",
     stack: ["Android", "Kotlin", "IMU", "Sensor Fusion", "On-device ML"],
@@ -128,7 +140,7 @@ export const projects: Project[] = [
   },
   {
     title: "Time-Series Event Retrieval",
-    blurb: "Leakage-aware ECG retrieval benchmark across embedding strategies.",
+    blurb: "Benchmarks ECG search across embedding methods, with a best Macro F1 of 0.73.",
     description:
       "Built a leakage-aware ECG retrieval benchmark from MIT-BIH Arrhythmia records, converting beats into 361-sample windows for nearest-neighbor search. Compared GRP, UMAP, and supervised UMAP embeddings across time, frequency, and mixed representations — best Macro F1 ~0.73 with 64-dim GRP frequency embeddings.",
     stack: ["Python", "scikit-learn", "UMAP", "GRP", "Signal Processing"],
