@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { createPortal } from "react-dom";
 
 type Celebration = {
   id: number;
@@ -42,7 +43,7 @@ export default function YellowJacketClick() {
   const { id, x, y, width, height } = celebration;
   const vertical = y > height - 150 ? -1 : 1;
 
-  return (
+  return createPortal(
     <div className="yellow-jacket-overlay" aria-hidden="true">
       {(reducedMotion ? [32] : sizes).map((size, i, particles) => {
         const drift = (i - 1) * 50;
@@ -91,6 +92,7 @@ export default function YellowJacketClick() {
           </motion.div>
         );
       })}
-    </div>
+    </div>,
+    document.querySelector("dialog[open]") ?? document.body,
   );
 }

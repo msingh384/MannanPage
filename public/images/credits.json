@@ -1,0 +1,10 @@
+{
+  "note": "Stock photography used as thematic project cover art, not as product screenshots. Downloaded 2026-11-10.",
+  "license": "https://www.pexels.com/license/",
+  "images": [
+    {"file": "cinema.jpg", "source": "https://www.pexels.com/photo/empty-red-seats-in-movie-theater-7991179/", "photographer": "Tima Miroshnichenko"},
+    {"file": "nutrition.jpg", "source": "https://www.pexels.com/photo/photo-of-vegetable-salad-in-a-bowl-3298060/"},
+    {"file": "phone.jpg", "source": "https://www.pexels.com/photo/black-smartphone-on-black-surface-13570137/", "photographer": "Luis Quintero"},
+    {"file": "signal.jpg", "source": "https://www.pexels.com/photo/blue-light-trails-10360768/"}
+  ]
+}

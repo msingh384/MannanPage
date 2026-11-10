@@ -25,7 +25,7 @@ export default function Navbar() {
       const starts = sections.map(section => section!.getBoundingClientRect().top + scroll);
       const progress = sections.map((_, i) => {
         const end = starts[i + 1] ?? document.documentElement.scrollHeight - window.innerHeight * 0.6;
-        return atBottom ? 1 : Math.round(clamp((probe - starts[i]) / Math.max(1, end - starts[i])) * 100);
+        return atBottom ? 100 : Math.round(clamp((probe - starts[i]) / Math.max(1, end - starts[i])) * 100);
       });
       const active = atBottom ? navLinks.length - 1 : Math.max(0, starts.findLastIndex(start => probe >= start));
       const visible = probe >= starts[0];

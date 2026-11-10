@@ -1,46 +1,23 @@
-import { cn } from "@/lib/utils";
-import { Reveal, RevealItem } from "./Reveal";
+"use client";
 
-type Props = {
-  eyebrow: string;
-  title: string;
-  description?: string;
-  align?: "left" | "center";
-  className?: string;
-};
+import { motion, useReducedMotion } from "framer-motion";
+import { Reveal } from "./Reveal";
 
-export function SectionHeading({
-  eyebrow,
-  title,
-  description,
-  align = "left",
-  className,
-}: Props) {
+type Props = { eyebrow: string; title: string; className?: string };
+
+export function SectionHeading({ eyebrow, title, className = "" }: Props) {
+  const reduced = useReducedMotion();
   return (
-    <Reveal
-      className={cn(
-        "max-w-2xl",
-        align === "center" && "mx-auto text-center",
-        className,
-      )}
-    >
-      <RevealItem>
-        <p className="font-mono text-xs tracking-[0.18em] text-zinc-500">
-          {eyebrow}
-        </p>
-      </RevealItem>
-      <RevealItem>
-        <h2 className="mt-5 text-balance text-3xl font-semibold tracking-tight text-zinc-50 sm:text-4xl md:text-5xl">
-          {title}
-        </h2>
-      </RevealItem>
-      {description && (
-        <RevealItem>
-          <p className="mt-4 text-balance text-base leading-relaxed text-zinc-400 sm:text-lg">
-            {description}
-          </p>
-        </RevealItem>
-      )}
+    <Reveal y={0} className={`section-heading ${className}`}>
+      <motion.span aria-hidden="true" className="heading-rule" variants={reduced ? {} : { hidden: { scaleX: 0 }, visible: { scaleX: 1, transition: { duration: 0.95, ease: [0.22, 1, 0.36, 1] } } }} />
+      <motion.h2 aria-label={title} variants={reduced ? {} : { visible: { transition: { staggerChildren: 0.025 } } }}>
+        {Array.from(title + ".").map((letter, i) => (
+          <span key={i} className={`heading-letter-mask${i === title.length ? " heading-period" : ""}`} aria-hidden="true">
+            <motion.span variants={reduced ? {} : { hidden: { y: "110%" }, visible: { y: "0%", transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } } }}>{letter === " " ? "\u00a0" : letter}</motion.span>
+          </span>
+        ))}
+      </motion.h2>
+      <span className="section-number">/{eyebrow}</span>
     </Reveal>
   );
 }

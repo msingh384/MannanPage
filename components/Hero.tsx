@@ -22,7 +22,7 @@ export default function Hero() {
           className="landing-content"
           style={reducedMotion ? undefined : { opacity, y }}
         >
-          <h1 className="landing-name">{site.name}</h1>
+          <h1 className="landing-name" aria-label={site.name}><span>Mannan Raj</span><span>Singh</span></h1>
         </motion.div>
         <motion.a
           className="landing-scroll"
