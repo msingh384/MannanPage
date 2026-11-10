@@ -10,9 +10,8 @@ export default function Education() {
     <section id="education" className="relative py-24 sm:py-32">
       <Container>
         <SectionHeading
-          eyebrow="04 · Education"
-          title="Currently learning."
-          description="Some classes, a lot of office hours, and the occasional 3am debugging session."
+          eyebrow="04"
+          title="Education"
         />
 
         <div className="mt-14 space-y-6">

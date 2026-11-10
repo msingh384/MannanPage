@@ -60,10 +60,9 @@ export default function Navbar() {
     return () => document.removeEventListener("keydown", onKey);
   }, [open]);
 
-  const total = Math.round(position.progress.reduce((sum, value) => sum + value, 0) / navLinks.length);
   const links = (mobile = false) => (
     <>
-      <a href="#top" className="rail-name" onClick={() => setOpen(false)}>{site.name}<span>Back to top ↑</span></a>
+      <a href="#top" className="rail-name" aria-label="Back to top" onClick={() => setOpen(false)}>{site.name}</a>
       <ol
         className="rail-links"
         style={{ "--section-progress": Math.min(1, (position.active + position.progress[position.active] / 100) / (navLinks.length - 1)) } as CSSProperties}
@@ -85,9 +84,7 @@ export default function Navbar() {
       </ol>
       <div className="rail-footer">
         <a href={site.resumeUrl} target="_blank" rel="noreferrer">Resume<ArrowUpRight size={13} /></a>
-        <div className="rail-reading" role="progressbar" aria-label="Page reading progress" aria-valuenow={total} aria-valuemin={0} aria-valuemax={100}>
-          <span>0{position.active + 1} / 05</span><span>{total}%</span>
-        </div>
+
       </div>
     </>
   );
@@ -108,7 +105,6 @@ export default function Navbar() {
           onClick={() => setOpen(value => !value)}
         >
           <span>{navLinks[position.active].label}</span>
-          <span className="text-zinc-500">0{position.active + 1}/05</span>
           {open ? <X size={16} /> : <Menu size={16} />}
         </button>
         <nav ref={mobilePanel} id="mobile-section-menu" aria-label="Mobile section navigation" className="mobile-section-panel" hidden={!open} inert={!open}>

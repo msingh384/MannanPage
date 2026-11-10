@@ -13,9 +13,6 @@ export default function Footer() {
             <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-zinc-500">
               © {year} {site.name}
             </p>
-            <p className="mt-1 text-sm text-zinc-400">
-              Built with Next.js, Tailwind, and a lot of coffee.
-            </p>
           </div>
 
           <div className="flex items-center gap-1.5">

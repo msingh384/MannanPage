@@ -10,9 +10,8 @@ export default function About() {
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
             <SectionHeading
-              eyebrow="01 · About"
-              title="A quick intro."
-              description="I&apos;m a CS senior who likes building tools that feel inevitable — software where you stop noticing the software."
+              eyebrow="01"
+              title="About"
             />
           </div>
 

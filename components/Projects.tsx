@@ -8,7 +8,7 @@ export default function Projects() {
   return (
     <section id="projects" className="relative py-24 sm:py-32">
       <Container>
-        <SectionHeading eyebrow="03 · Projects" title="Selected projects." />
+        <SectionHeading eyebrow="03" title="Projects" />
         <div className="mt-10 grid auto-rows-fr gap-5 sm:gap-6 md:grid-cols-2">
           {projects.map((project, i) => (
             <Reveal

@@ -25,16 +25,9 @@ export function SectionHeading({
       )}
     >
       <RevealItem>
-        <div
-          className={cn(
-            "inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs font-medium text-zinc-300 backdrop-blur",
-          )}
-        >
-          <span className="relative inline-block size-1.5 rounded-full bg-violet-400 text-violet-400 pulse-dot" />
-          <span className="font-mono uppercase tracking-[0.18em]">
-            {eyebrow}
-          </span>
-        </div>
+        <p className="font-mono text-xs tracking-[0.18em] text-zinc-500">
+          {eyebrow}
+        </p>
       </RevealItem>
       <RevealItem>
         <h2 className="mt-5 text-balance text-3xl font-semibold tracking-tight text-zinc-50 sm:text-4xl md:text-5xl">

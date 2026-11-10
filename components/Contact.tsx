@@ -17,18 +17,10 @@ export default function Contact() {
             </div>
 
             <RevealItem>
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 font-mono text-[11px] uppercase tracking-[0.2em] text-zinc-300">
-                05 · Contact
-              </span>
-            </RevealItem>
-            <RevealItem>
-              <h2 className="mt-5 text-balance text-3xl font-semibold tracking-tight text-zinc-50 sm:text-4xl md:text-5xl">
-                Let&apos;s build something together.
+              <p className="font-mono text-xs tracking-[0.18em] text-zinc-500">05</p>
+              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-zinc-50 sm:text-4xl md:text-5xl">
+                Contact
               </h2>
-              <p className="mx-auto mt-4 max-w-md text-pretty text-zinc-400">
-                I&apos;m open to internship chats, side project collabs, or just
-                talking shop. The fastest way to reach me is email.
-              </p>
             </RevealItem>
             <RevealItem>
               <EmailContact />
