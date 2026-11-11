@@ -15,7 +15,24 @@ a { text-decoration: none; }
 a, button { -webkit-tap-highlight-color: transparent; }
 button, summary { cursor: pointer; }
 a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; }
-.space-background { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; background: #08090a; }
+.space-background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 65% 70% at 0% 12%, rgba(63, 78, 150, .2), transparent 75%),
+    radial-gradient(ellipse 60% 65% at 100% 45%, rgba(103, 57, 136, .17), transparent 75%),
+    radial-gradient(ellipse 65% 55% at 35% 110%, rgba(131, 99, 56, .12), transparent 80%),
+    #08090a;
+}
+.space-background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 45%, transparent 25%, rgba(3, 5, 8, .35) 100%);
+}
 .space-stars { width: 100%; height: 100%; opacity: .45; }
 
 /* The introduction remains just a name, with the existing scroll-driven exit. */
