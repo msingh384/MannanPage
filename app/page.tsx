@@ -9,13 +9,11 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <div className="site-content">
-        <About />
-        <Experience />
-        <Projects />
-        <Education />
-        <Contact />
-      </div>
+      <Projects />
+      <Experience />
+      <About />
+      <Education />
+      <Contact />
     </>
   );
 }

@@ -3,8 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import SpaceBackground from "@/components/SpaceBackground";
-import YellowJacketClick from "@/components/YellowJacketClick";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -63,14 +61,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-      suppressHydrationWarning
+      className={`${geistSans.variable} ${geistMono.variable}`}
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground selection:bg-violet-500/30">
-        <SpaceBackground />
-        <YellowJacketClick />
+      <body>
+        <a className="skip-link" href="#main-content">Skip to content</a>
         <Navbar />
-        <main className="flex-1">{children}</main>
+        <main id="main-content" tabIndex={-1}>{children}</main>
         <Footer />
       </body>
     </html>

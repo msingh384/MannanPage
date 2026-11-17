@@ -1,31 +1,24 @@
-import { Container } from "./ui/Container";
-import { Reveal } from "./ui/Reveal";
-import { SectionHeading } from "./ui/SectionHeading";
+import { Plus } from "lucide-react";
 import { education } from "@/data/site";
 
 export default function Education() {
   return (
-    <section id="education" className="editorial-section">
-      <Container>
-        <SectionHeading eyebrow="04" title="Education" />
-        {education.map(e => (
-          <Reveal key={e.school} y={28}>
-            <div className="education-layout">
-              <div>
-                <p className="small-label">{e.period} / {e.location}</p>
-                <h3>{e.school}</h3>
-                <p className="education-degree">{e.degree}</p>
-                <ul className="education-highlights">{e.highlights.map(highlight => <li key={highlight}>{highlight}</li>)}</ul>
-              </div>
-              {e.gpa && <div className="education-gpa"><span>{e.gpa.split(" / ")[0]}</span><p>GPA / 4.00</p></div>}
-            </div>
-            <details className="coursework">
-              <summary>Coursework<span aria-hidden="true">+</span></summary>
-              <p>{e.coursework.join(" / ")}</p>
+    <section id="education" className="shell split-section" aria-labelledby="education-title">
+      <div><h2 id="education-title">Education<span>.</span></h2></div>
+      <div>
+        {education.map(item => (
+          <article key={item.school} className="experience-row">
+            <p className="label">{item.period} · {item.location}</p>
+            <h3>{item.school}</h3>
+            <p className="role">{item.degree}{item.gpa && ` · ${item.gpa} GPA`}</p>
+            <ul className="highlights">{item.highlights.map(highlight => <li key={highlight}>{highlight}</li>)}</ul>
+            <details>
+              <summary><Plus size={15} aria-hidden="true" /> Coursework</summary>
+              <ul className="tags">{item.coursework.map(course => <li key={course}>{course}</li>)}</ul>
             </details>
-          </Reveal>
+          </article>
         ))}
-      </Container>
+      </div>
     </section>
   );
 }

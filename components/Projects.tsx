@@ -1,6 +1,3 @@
-import { Container } from "./ui/Container";
-import { Reveal } from "./ui/Reveal";
-import { SectionHeading } from "./ui/SectionHeading";
 import { projects } from "@/data/site";
 import ProjectCard from "./ProjectCard";
 
@@ -13,17 +10,18 @@ const covers = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="editorial-section">
-      <Container>
-        <SectionHeading eyebrow="03" title="Projects" />
+    <section id="projects" className="work-section" aria-labelledby="projects-title">
+      <div className="shell">
+        <div className="section-intro">
+          <div><p className="label">Portfolio</p><h2 id="projects-title">Selected work<span>.</span></h2></div>
+          <p>Projects in applied AI, mobile automation, and signal processing.</p>
+        </div>
         <div className="showcase-grid">
           {projects.map((project, i) => (
-            <Reveal key={project.title} y={44} delay={(i % 2) * 0.08} className="showcase-item">
-              <ProjectCard project={project} cover={covers[i]} index={i} />
-            </Reveal>
+            <ProjectCard key={project.title} project={project} cover={covers[i]} index={i} />
           ))}
         </div>
-      </Container>
+      </div>
     </section>
   );
 }
