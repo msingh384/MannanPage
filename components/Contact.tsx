@@ -4,7 +4,7 @@ import EmailContact from "./EmailContact";
 
 export default function Contact() {
   return (
-    <section id="contact" className="contact-section" aria-labelledby="contact-title">
+    <section id="contact" className="contact-section" aria-labelledby="contact-title" data-pointer-surface>
       <div className="shell contact-inner">
         <div>
           <h2 id="contact-title" data-scroll-reveal>Let’s talk<span>.</span></h2>

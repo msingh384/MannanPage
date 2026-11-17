@@ -109,7 +109,32 @@ body:has(.project-dialog[open]) { overflow: hidden; }
 .expertise-grid > div { padding-top: 10px; border-top: 1px solid var(--line); }
 .expertise-grid dd { margin-top: 6px; font-size: .88rem; color: var(--muted); line-height: 1.6; }
 
-.contact-section { background: var(--accent); }
+.contact-section {
+  --contact-dot-spacing: 19px;
+  position: relative;
+  isolation: isolate;
+  background: var(--accent);
+}
+.contact-section::before, .contact-section::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  background-size: var(--contact-dot-spacing) var(--contact-dot-spacing);
+}
+.contact-section::before {
+  background-image: radial-gradient(circle at center, #334c2b33 1px, transparent 1.6px);
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .contact-section::after {
+    background-image: radial-gradient(circle at center, #f8ffd4 1.55px, #6e873bb3 2px, transparent 3.15px);
+    mask-image: radial-gradient(circle 155px at var(--pointer-x, 50%) var(--pointer-y, 50%), #000 15%, #000a 52%, transparent);
+    opacity: 0;
+    transition: opacity .3s ease;
+  }
+  .contact-section[data-pointer-active]::after { opacity: 1; }
+}
 .contact-inner { display: grid; grid-template-columns: 1.5fr 1fr; align-items: end; gap: 28px clamp(32px, 9vw, 130px); padding-block: clamp(52px, 7vw, 94px); }
 .email-contact { margin-top: 18px; }
 .email-address { font-size: clamp(1.05rem, 2.3vw, 1.65rem); text-decoration: underline; text-underline-offset: 5px; overflow-wrap: anywhere; }
