@@ -14,9 +14,10 @@ export default function ProjectCard({ project, cover, index }: { project: Projec
   const titleId = `project-title-${index}`;
 
   return (
-    <article className="project-card">
-      <button type="button" className="project-shot" aria-label={`Explore ${project.title}`} aria-haspopup="dialog" onClick={() => dialog.current?.showModal()}>
+    <article className="project-card" data-scroll-reveal>
+      <button type="button" className="project-shot" data-pointer-surface aria-label={`Explore ${project.title}`} aria-haspopup="dialog" onClick={() => dialog.current?.showModal()}>
         <Image src={cover.src} alt="" fill sizes="(max-width: 720px) 90vw, 45vw" style={{ objectPosition: cover.position }} />
+        <span className="shot-glow" aria-hidden="true" />
         <span className="shot-arrow"><ArrowUpRight size={23} aria-hidden="true" /></span>
       </button>
       <div className="project-meta">

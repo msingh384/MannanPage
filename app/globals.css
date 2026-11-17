@@ -148,3 +148,127 @@ body:has(.project-dialog[open]) { overflow: hidden; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; }
 }
+
+/* Motion layers stay decorative and leave the native pointer available. */
+.cursor-follower {
+  position: fixed;
+  z-index: 20;
+  inset: 0 auto auto 0;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .18s ease;
+}
+.cursor-follower[data-visible] { opacity: 1; }
+.cursor-follower span {
+  display: block;
+  width: 28px;
+  height: 28px;
+  margin: -14px;
+  border: 1px solid #60806a;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px #f5f4ee91;
+  transform: scale(.73);
+  transition: transform .22s cubic-bezier(.22, 1, .36, 1), background .2s, border-color .2s;
+}
+.cursor-follower[data-over-link] span { transform: scale(1.24); border-color: var(--ink); background: #d9ee7a30; }
+.cursor-follower[data-pressed] span { transform: scale(.58); }
+
+.portrait-glow, .shot-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(circle 150px at var(--pointer-x, 50%) var(--pointer-y, 50%), #efffa94d, transparent);
+  transition: opacity .35s ease;
+}
+[data-pointer-active] > :is(.portrait-glow, .shot-glow) { opacity: 1; }
+.portrait-glow { mix-blend-mode: screen; }
+.hero-portrait figcaption, .shot-arrow { z-index: 2; }
+.hero-portrait figcaption { position: relative; }
+.portrait-orbit {
+  position: absolute;
+  z-index: 2;
+  top: 2%;
+  right: -3%;
+  width: clamp(52px, 8vw, 105px);
+  aspect-ratio: 1;
+  border: 1px solid #e1f4a790;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.portrait-orbit::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -4px;
+  width: 8px;
+  height: 8px;
+  margin-top: -4px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.reading-progress { display: none; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-copy > * {
+    animation: hero-enter .8s cubic-bezier(.22, 1, .36, 1) both;
+  }
+  .hero-copy h1 { animation-delay: .07s; }
+  .hero-description { animation-delay: .17s; }
+  .hero-actions { animation-delay: .24s; }
+  .hero-portrait { animation: portrait-enter 1s cubic-bezier(.22, 1, .36, 1) both; }
+  .portrait-orbit {
+    animation: portrait-orbit 3.5s cubic-bezier(.22, 1, .36, 1) .25s backwards;
+    transition: rotate .85s cubic-bezier(.22, 1, .36, 1);
+  }
+  .hero-portrait:hover .portrait-orbit { rotate: 70deg; }
+  .project-dialog[open] { animation: dialog-enter .28s cubic-bezier(.22, 1, .36, 1) both; }
+  .experience-row details[open] > :nth-child(2) { animation: dialog-enter .32s cubic-bezier(.22, 1, .36, 1) both; }
+  .button, .wordmark, .header-contact, .contact-links svg { transition: translate .22s ease, background .2s, color .2s, border-color .2s; }
+
+  @supports (animation-timeline: scroll(root block)) {
+    .reading-progress {
+      display: block;
+      pointer-events: none;
+      position: fixed;
+      z-index: 8;
+      inset: 0 0 auto;
+      height: 3px;
+      background: linear-gradient(90deg, #789858, var(--accent));
+      transform-origin: left;
+      animation: reading-progress linear both;
+      animation-timeline: scroll(root block);
+    }
+  }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .button:hover, .wordmark:hover, .header-contact:hover { translate: 0 -2px; }
+  .contact-links a:hover svg { translate: 3px -3px; }
+}
+@media (prefers-reduced-motion: reduce), (pointer: coarse) {
+  .cursor-follower, .portrait-glow, .shot-glow { display: none; }
+}
+@keyframes hero-enter {
+  from { opacity: 0; translate: 0 22px; }
+  to { opacity: 1; translate: 0 0; }
+}
+@keyframes portrait-enter {
+  from { opacity: 0; translate: 0 14px; scale: .97; }
+  to { opacity: 1; translate: 0 0; scale: 1; }
+}
+@keyframes portrait-orbit {
+  from { rotate: -310deg; opacity: 0; }
+  20% { opacity: 1; }
+  to { rotate: 0deg; opacity: 1; }
+}
+@keyframes dialog-enter {
+  from { opacity: .45; translate: 0 10px; }
+  to { opacity: 1; translate: 0 0; }
+}
+@keyframes reading-progress {
+  from { scale: 0 1; }
+  to { scale: 1 1; }
+}

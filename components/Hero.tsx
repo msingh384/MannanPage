@@ -14,10 +14,12 @@ export default function Hero() {
           <a href={site.resumeUrl} target="_blank" rel="noreferrer" className="text-link">View résumé <ArrowUpRight size={16} aria-hidden="true" /></a>
         </div>
       </div>
-      <figure className="hero-portrait">
+      <figure className="hero-portrait" data-pointer-surface>
+        <div className="portrait-orbit" aria-hidden="true" />
         <div className="portrait-frame">
           <Image src="/avatar.jpg" alt={site.name} fill sizes="(max-width: 720px) 90vw, 36vw" preload />
         </div>
+        <span className="portrait-glow" aria-hidden="true" />
         <figcaption className="label">{site.location}</figcaption>
       </figure>
     </section>

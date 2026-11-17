@@ -12,7 +12,7 @@ export default function Projects() {
   return (
     <section id="projects" className="work-section" aria-labelledby="projects-title">
       <div className="shell">
-        <div className="section-intro">
+        <div className="section-intro" data-scroll-reveal>
           <div><p className="label">Portfolio</p><h2 id="projects-title">Selected work<span>.</span></h2></div>
           <p>Projects in applied AI, mobile automation, and signal processing.</p>
         </div>

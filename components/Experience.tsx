@@ -4,10 +4,10 @@ import { experiences } from "@/data/site";
 export default function Experience() {
   return (
     <section id="experience" className="shell split-section" aria-labelledby="experience-title">
-      <div><h2 id="experience-title">Experience<span>.</span></h2></div>
+      <div><h2 id="experience-title" data-scroll-reveal>Experience<span>.</span></h2></div>
       <div className="experience-list">
         {experiences.map(experience => (
-          <article key={experience.company} className="experience-row">
+          <article key={experience.company} className="experience-row" data-scroll-reveal>
             <p className="label">{experience.period} · {experience.location}</p>
             <h3>{experience.link ? <a href={experience.link} target="_blank" rel="noreferrer">{experience.company} <ArrowUpRight size={19} aria-hidden="true" /></a> : experience.company}</h3>
             <p className="role">{experience.role}</p>
