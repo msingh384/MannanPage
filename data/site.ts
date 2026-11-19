@@ -36,6 +36,7 @@ export type Experience = {
   period: string;
   location: string;
   description: string;
+  contribution: string;
   highlights: string[];
   stack: string[];
   link?: string;
@@ -49,6 +50,7 @@ export const experiences: Experience[] = [
     location: "Austin, TX",
     description:
       "Re-platformed the Save-and-Retrieve API behind Small Business Credit Card (SBCC) onboarding — migrated an encrypted data pipeline from the legacy Zima service to the Data Incubator Service (DIS).",
+    contribution: "Built expiration reminders for saved credit card applications.",
     highlights: [
       "Led end-to-end re-platforming of the Save-and-Retrieve API powering SBCC application onboarding, migrating the encrypted data pipeline from Zima to DIS.",
       "Re-architected secure storage and retrieval of customer PII used to pre-fill in-progress credit card applications, preserving end-to-end encryption across ingestion, persistence, and retrieval.",
@@ -65,6 +67,7 @@ export const experiences: Experience[] = [
     location: "San Francisco, CA",
     description:
       "Reviewed and validated ML evaluation pipelines for a leading AI research lab — debugging code-generation workflows and authoring reproducible test cases at scale.",
+    contribution: "Validated 500+ model evaluation nodes.",
     highlights: [
       "Debugged and validated 500+ ML model evaluation nodes for a leading AI research lab, identifying logic errors, runtime failures, and edge-case breakdowns across code-generation workflows.",
       "Built Python and Git-based QC automation to batch-review model outputs, track revision history, and flag failed submissions across large-scale evaluation pipelines.",
@@ -80,6 +83,7 @@ export const experiences: Experience[] = [
     location: "Atlanta, GA",
     description:
       "Built a serverless weather mesonet on AWS — ingesting sensor telemetry from the field and surfacing it to researchers via an interactive dashboard.",
+    contribution: "Built a weather data pipeline for 100+ IoT sensors.",
     highlights: [
       "Architected a serverless AWS weather mesonet ingesting data from 100+ IoT sensors and handling 5,000+ requests/min using Lambda, DynamoDB, and event-driven pipelines.",
       "Built a React + AWS Amplify dashboard to visualize historical weather patterns, reducing data interpretation time by 30%.",

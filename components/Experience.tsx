@@ -1,25 +1,30 @@
 import { ArrowUpRight, Plus } from "lucide-react";
 import { experiences } from "@/data/site";
+import ExperienceTimeline from "./ExperienceTimeline";
 
 export default function Experience() {
   return (
     <section id="experience" className="shell split-section" aria-labelledby="experience-title">
-      <div><h2 id="experience-title" data-scroll-reveal>Experience<span>.</span></h2></div>
-      <div className="experience-list">
+      <div className="experience-heading"><h2 id="experience-title">Experience<span>.</span></h2></div>
+      <ExperienceTimeline>
         {experiences.map(experience => (
-          <article key={experience.company} className="experience-row" data-scroll-reveal>
-            <p className="label">{experience.period} · {experience.location}</p>
-            <h3>{experience.link ? <a href={experience.link} target="_blank" rel="noreferrer">{experience.company} <ArrowUpRight size={19} aria-hidden="true" /></a> : experience.company}</h3>
-            <p className="role">{experience.role}</p>
-            <p>{experience.description}</p>
-            <details>
-              <summary><Plus size={15} aria-hidden="true" /> Role details</summary>
-              <ul className="highlights">{experience.highlights.map(item => <li key={item}>{item}</li>)}</ul>
-              <ul className="tags" aria-label="Technologies">{experience.stack.map(item => <li key={item}>{item}</li>)}</ul>
-            </details>
-          </article>
+          <li key={experience.company} className="experience-entry">
+            <span className="experience-marker" aria-hidden="true" />
+            <article className="experience-row">
+              <p className="label">{experience.period} · {experience.location}</p>
+              <h3>{experience.link ? <a href={experience.link} target="_blank" rel="noreferrer">{experience.company} <ArrowUpRight size={19} aria-hidden="true" /></a> : experience.company}</h3>
+              <p className="role">{experience.role}</p>
+              <p>{experience.description}</p>
+              <p className="experience-contribution">{experience.contribution}</p>
+              <details>
+                <summary><Plus size={15} aria-hidden="true" /> Role details</summary>
+                <ul className="highlights">{experience.highlights.map(item => <li key={item}>{item}</li>)}</ul>
+                <ul className="tags" aria-label="Technologies">{experience.stack.map(item => <li key={item}>{item}</li>)}</ul>
+              </details>
+            </article>
+          </li>
         ))}
-      </div>
+      </ExperienceTimeline>
     </section>
   );
 }
