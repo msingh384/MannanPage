@@ -442,3 +442,126 @@ body:has(.project-dialog[open]) { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .experience-list::after { display: none; }
 }
+
+.contact-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  filter: brightness(.3) sepia(.7) hue-rotate(43deg);
+}
+:root[data-theme="night"] .contact-canvas {
+  filter: sepia(1) saturate(2) hue-rotate(24deg) drop-shadow(0 0 3px #d8fa79aa);
+}
+.contact-canvas:focus-visible { outline-offset: -5px; }
+.contact-drawing .contact-inner { position: relative; z-index: 1; }
+.contact-drawing[data-drawing] .contact-canvas { pointer-events: auto; cursor: crosshair; touch-action: none; }
+.contact-drawing[data-drawing] .contact-inner { pointer-events: none; }
+.contact-drawing[data-drawing] .contact-inner :is(a, button) { pointer-events: auto; }
+.drawing-controls {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.drawing-controls button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 38px;
+  padding: 6px 12px;
+  border: 1px solid var(--contact-line);
+  border-radius: 100px;
+  background: var(--contact-surface);
+  font-size: .82rem;
+  font-weight: 600;
+}
+.drawing-controls button:hover, .drawing-controls button[aria-pressed="true"] {
+  border-color: var(--contact-ink);
+  background: var(--contact-ink);
+  color: var(--contact-surface);
+}
+
+.hero-portrait figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 14px;
+}
+.atlanta-window {
+  --sky-top: #d5e2d7;
+  --sky-bottom: #f1e9cd;
+  --city-facade: #4d6b5d;
+  --city-window: #dce8cf70;
+  --city-hover: #fff5c3;
+  --sky-orb: #ffe2a0;
+  position: relative;
+  isolation: isolate;
+  display: block;
+  width: clamp(130px, 15vw, 186px);
+  height: 66px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: linear-gradient(var(--sky-top), var(--sky-bottom));
+}
+:root[data-theme="night"] .atlanta-window {
+  --sky-top: #121c29;
+  --sky-bottom: #364b43;
+  --city-facade: #172d26;
+  --city-window: #e2f4a480;
+  --city-hover: #f5ffbd;
+  --sky-orb: #e2f0c6;
+}
+.atlanta-sky {
+  position: absolute;
+  top: 9px;
+  right: 14px;
+  width: 13px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--sky-orb);
+  box-shadow: 0 0 12px var(--sky-orb);
+}
+:root[data-theme="night"] .atlanta-sky {
+  background: transparent;
+  box-shadow: inset -4px -2px var(--sky-orb);
+}
+.atlanta-buildings {
+  position: absolute;
+  inset: auto 7px 0;
+  display: flex;
+  align-items: end;
+  gap: 3px;
+}
+.atlanta-building {
+  position: relative;
+  flex: 1;
+  height: var(--building-height);
+  background: var(--city-facade);
+}
+.atlanta-building:nth-child(even) { flex-grow: 1.3; }
+.atlanta-building[data-shape="round"] { border-radius: 45% 45% 0 0 / 10% 10% 0 0; }
+.atlanta-building[data-shape="spire"]::before, .atlanta-building[data-shape="twin"]::before {
+  content: "";
+  position: absolute;
+  inset: auto 0 100%;
+  margin-inline: auto;
+  width: 45%;
+  height: 8px;
+  background: var(--city-facade);
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+.atlanta-building[data-shape="twin"]::before {
+  width: 80%;
+  clip-path: polygon(24% 0, 50% 100%, 76% 0, 100% 100%, 0 100%);
+}
+.atlanta-building::after {
+  content: "";
+  position: absolute;
+  inset: 4px 2px 0;
+  background: radial-gradient(ellipse 1.2px 1.6px at center, var(--city-window) 80%, transparent) 0 0 / 5px 7px;
+}
+.atlanta-building:nth-child(3n)::after { background-position: 2px 3px; }
+.atlanta-building:hover { --city-window: var(--city-hover); }

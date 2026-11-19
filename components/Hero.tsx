@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { site } from "@/data/site";
 import YellowJacketClick from "./YellowJacketClick";
+import AtlantaSkyline from "./AtlantaSkyline";
 
 export default function Hero() {
   return (
@@ -21,7 +22,10 @@ export default function Hero() {
           <Image src="/avatar.jpg" alt={site.name} fill sizes="(max-width: 720px) 90vw, 36vw" preload />
         </div>
         <span className="portrait-glow" aria-hidden="true" />
-        <figcaption className="label">{site.location}</figcaption>
+        <figcaption className="label">
+          <span>{site.location}</span>
+          <AtlantaSkyline />
+        </figcaption>
       </figure>
     </section>
   );
