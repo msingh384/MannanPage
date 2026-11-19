@@ -443,7 +443,7 @@ body:has(.project-dialog[open]) { overflow: hidden; }
   .experience-list::after { display: none; }
 }
 
-.contact-canvas {
+.contact-dot-trail {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -451,37 +451,10 @@ body:has(.project-dialog[open]) { overflow: hidden; }
   pointer-events: none;
   filter: brightness(.3) sepia(.7) hue-rotate(43deg);
 }
-:root[data-theme="night"] .contact-canvas {
+:root[data-theme="night"] .contact-dot-trail {
   filter: sepia(1) saturate(2) hue-rotate(24deg) drop-shadow(0 0 3px #d8fa79aa);
 }
-.contact-canvas:focus-visible { outline-offset: -5px; }
-.contact-drawing .contact-inner { position: relative; z-index: 1; }
-.contact-drawing[data-drawing] .contact-canvas { pointer-events: auto; cursor: crosshair; touch-action: none; }
-.contact-drawing[data-drawing] .contact-inner { pointer-events: none; }
-.contact-drawing[data-drawing] .contact-inner :is(a, button) { pointer-events: auto; }
-.drawing-controls {
-  grid-column: 1 / -1;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.drawing-controls button {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  min-height: 38px;
-  padding: 6px 12px;
-  border: 1px solid var(--contact-line);
-  border-radius: 100px;
-  background: var(--contact-surface);
-  font-size: .82rem;
-  font-weight: 600;
-}
-.drawing-controls button:hover, .drawing-controls button[aria-pressed="true"] {
-  border-color: var(--contact-ink);
-  background: var(--contact-ink);
-  color: var(--contact-surface);
-}
+.contact-inner { position: relative; }
 
 .hero-portrait figcaption {
   display: flex;
@@ -500,8 +473,8 @@ body:has(.project-dialog[open]) { overflow: hidden; }
   position: relative;
   isolation: isolate;
   display: block;
-  width: clamp(130px, 15vw, 186px);
-  height: 66px;
+  width: 100%;
+  height: 96px;
   overflow: hidden;
   border: 1px solid var(--line);
   background: linear-gradient(var(--sky-top), var(--sky-bottom));
@@ -530,15 +503,16 @@ body:has(.project-dialog[open]) { overflow: hidden; }
 }
 .atlanta-buildings {
   position: absolute;
-  inset: auto 7px 0;
+  inset: auto 12px 9px;
   display: flex;
   align-items: end;
-  gap: 3px;
+  gap: clamp(3px, .65vw, 8px);
+  border-bottom: 1px solid var(--city-facade);
 }
 .atlanta-building {
   position: relative;
   flex: 1;
-  height: var(--building-height);
+  height: calc(var(--building-height) * 1.45);
   background: var(--city-facade);
 }
 .atlanta-building:nth-child(even) { flex-grow: 1.3; }

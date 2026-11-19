@@ -1,12 +1,13 @@
 import { ArrowUpRight } from "lucide-react";
 import { site } from "@/data/site";
 import EmailContact from "./EmailContact";
-import ContactDrawing from "./ContactDrawing";
+import ContactDotTrail from "./ContactDotTrail";
 
 export default function Contact() {
   return (
     <section id="contact" className="contact-section" aria-labelledby="contact-title" data-pointer-surface>
-      <ContactDrawing>
+      <ContactDotTrail />
+      <div className="shell contact-inner">
         <div>
           <h2 id="contact-title" data-scroll-reveal>Let’s talk<span>.</span></h2>
           <EmailContact />
@@ -16,7 +17,7 @@ export default function Contact() {
           <a href={site.socials.linkedin} target="_blank" rel="noreferrer">LinkedIn <ArrowUpRight size={17} aria-hidden="true" /></a>
           <a href={site.resumeUrl} target="_blank" rel="noreferrer">Résumé <ArrowUpRight size={17} aria-hidden="true" /></a>
         </div>
-      </ContactDrawing>
+      </div>
     </section>
   );
 }
