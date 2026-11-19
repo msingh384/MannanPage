@@ -1,12 +1,13 @@
 import Image from "next/image";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { site } from "@/data/site";
+import YellowJacketClick from "./YellowJacketClick";
 
 export default function Hero() {
   return (
     <section className="hero shell" aria-labelledby="hero-title">
       <div className="hero-copy">
-        <p className="label hero-role"><span />{site.role} · Georgia Tech</p>
+        <p className="label hero-role"><span className="hero-role-dot" aria-hidden="true" />{site.role} · <YellowJacketClick /></p>
         <h1 id="hero-title">Mannan<br />Raj <em>Singh.</em></h1>
         <p className="hero-description">I build software across backend systems, full-stack applications, and machine learning.</p>
         <div className="hero-actions">
