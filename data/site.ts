@@ -9,7 +9,7 @@ export const site = {
   role: "Software Engineer",
   tagline:
     "CS senior at Georgia Tech building software that's fast, thoughtful, and robust.",
-  location: "Atlanta, GA · Austin, TX",
+  location: "Atlanta, GA",
   status: {
     label: "Georgia Tech Senior",
     available: true,
